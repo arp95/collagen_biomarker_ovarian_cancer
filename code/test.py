@@ -33,8 +33,6 @@ import itertools
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from skimage import color
-from .net import *
-from .post_proc import *
 import glob
 import inspect
 import logging
