@@ -1,6 +1,6 @@
 '''
-Code taken from original Hovernet implementation: https://github.com/vqdang/hover_net
-Modified script for my use case
+Modified by: Arpit Aggarwal
+Hovernet Model for Nuclei Segmentation: https://github.com/vqdang/hover_net
 '''
 
 
@@ -98,7 +98,7 @@ def visualize_instances_dict(
         else:
             inst_colour = (inst_rng_colors[idx]).tolist()
 
-        #if inst_colour == (0, 255, 0):
+        #if inst_colour == (255, 255, 0):
         #    is_til = 1
         #    color = inst_colour
         cv2.drawContours(overlay, [inst_contour], -1, color, line_thickness)
@@ -426,7 +426,7 @@ class InferManager(InferManager):
         assert self.mem_usage < 1.0 and self.mem_usage > 0.0
 
         # * depend on the number of samples and their size, this may be less efficient
-        file_path_list = glob.glob(self.input_dir + "*_crop.png")
+        file_path_list = glob.glob(self.input_dir + "*.png")
         file_path_list.sort()
         assert len(file_path_list) > 0, 'Not Detected Any Files From Path'
         print(len(file_path_list))
@@ -447,20 +447,11 @@ class InferManager(InferManager):
             cv2.imwrite(save_path, cv2.cvtColor(overlaid_img, cv2.COLOR_RGB2BGR))
 
             # write the binary mask after applying erosion
-            #for index in range(0, 3):
-            #    binary_img_eroded = cv2.erode(binary_img.copy(), None, iterations=index+1)
+            for index in range(0, 3):
+                binary_img_eroded = cv2.erode(binary_img.copy(), None, iterations=index+1)
             save_path = "%snuclei_masks/%s.png" % (self.output_dir, img_name)
-            cv2.imwrite(save_path, binary_img)
+            cv2.imwrite(save_path, binary_img_eroded)
 
-            # write csv
-            #save_path = "%snuclei_csvs/%s.csv" % (self.output_dir, img_name)
-            #with open(save_path, 'w', newline='') as csvfile:
-            #    spamwriter = csv.writer(csvfile)
-            #    spamwriter.writerow(["Index", "Contour", "Centroid", "Is_TIL", "Is_EPI"])
-	    #    
-            #    for index in range(0, len(contours)):
-            #        spamwriter.writerow([str(index+1), contours[index], centroids[index], #str(tils[index]), str(epi_stroma[index])])
-            #return img_name
 
         def detach_items_of_uid(items_list, uid, nr_expected_items):
             item_counter = 0

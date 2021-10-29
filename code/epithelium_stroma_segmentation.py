@@ -1,88 +1,81 @@
-'''
-Script provided by Haojia for running epi/stroma segmentation. Modified script for my use-case.
-'''
+"""
+Original Author: Cheng Lu
+Modified By: Arpit Aggarwal
+Description of the file: Epi/Stroma segmentation. Updated script for my use case.
+"""
 
 
-# header files loaded
-import os
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
-from torch.autograd import Variable
-import torchvision.transforms as transforms
-import torch.utils.data as DATA
+# header files needed
+from unet import *
+from glob import glob
 from PIL import Image
 import numpy as np
-import os
-from skimage import io
 import cv2
-from epi_stroma_model import *
-print("Header files loaded!")
+import torch
+import torch.nn as nn
+from torchvision import transforms
+import sys
+import os
+from matplotlib import cm
+from torch.utils.data import DataLoader
 
 
-# get the options selected by user
-image_size = 1000
-model_path = "model_files/latest_net_G.pth"
-data_path = "results/patches"
+# parameters
+model_path = "model_files/epi_seg_unet.pth"
+input_path = "results/patches/*.png"
 output_path = "results/epithelium_stroma_masks/"
-try:
-    opt = TestOptions().parse()
-except Exception as e:
-    # add by haojia
-    print('error accur here')
-    exc_type, exc_value, exc_traceback = sys.exc_info()
-    print("*** format_exc, first and last line:")
-    formatted_lines = traceback.format_exc().splitlines()
-    print(formatted_lines[0])
-    print(formatted_lines[-1])
-    print("*** format_exception:")
-    print(repr(traceback.format_exception(exc_type, exc_value,
-                                          exc_traceback)))
-    print("*** extract_tb:")
-    print(repr(traceback.extract_tb(exc_traceback)))
-    print("*** format_tb:")
-    print(repr(traceback.format_tb(exc_traceback)))
-    print("*** tb_lineno:", exc_traceback.tb_lineno)
-
-
-# convert PyTorch tensor to numpy
-def tensor2im(image_tensor, imtype=np.uint8, normalize=True):
-    image_numpy = image_tensor.cpu().float().numpy()
-    if normalize:
-        image_numpy = (np.transpose(image_numpy, (1, 2, 0)) + 1) / 2.0 * 255.0
-    else:
-        image_numpy = np.transpose(image_numpy, (1, 2, 0)) * 255.0      
-    image_numpy = np.clip(image_numpy, 0, 255)
-    if image_numpy.shape[2] == 1 or image_numpy.shape[2] > 3:        
-        image_numpy = image_numpy[:,:,0]
-    return image_numpy.astype(imtype)
-
-
-# normalizing the data
-data_transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),])    
-DATASET = CustomDataLoader(root=data_path, transform=data_transform)
-data_loader = DATA.DataLoader(dataset=DATASET, batch_size=1, shuffle=False, num_workers=0)
-print('Finished loading dataset...')
+image_size = 3000
+input_image_size = 750
 
 
 # load model
-netG = networks.define_G() 
-networks.load_network(network=netG, save_path=model_path)
-#netG.cuda()
-print('Loaded model...')
+#device = torch.device(f'cuda' if torch.cuda.is_available() else 'cpu')
+device = 'cpu'
+net = torch.load(model_path, map_location=device)
+net.eval()
 
 
-# main loop for testing
-for i, (data, img_path) in enumerate(data_loader):
-    #input_concat = Variable(data, volatile=True).cuda()
-    input_concat = Variable(data, volatile=True)
-    fake_image = netG.forward(input_concat)
+# function to return epi/stroma mask for a given patch
+def get_patch_epithelium_stroma_mask(input_path):
+    # read image and get original patch dimensions
+    patch = cv2.imread(input_path)
+    patch = cv2.resize(patch, (input_image_size, input_image_size))
+    np_original_patch = np.array(patch).astype(np.uint8)
+    h = int(np_original_patch.shape[0])
+    w = int(np_original_patch.shape[1])
+
+    # get output mask
+    np_patch = np.array(patch).astype(np.uint8)
+    output_patch_mask = np.zeros((h, w)).astype(np.uint8)
     
-    image_pil = tensor2im(fake_image.data[0])  
-    file_name = os.path.basename("".join(img_path))
-    ret, thresh_eimg = cv2.threshold(image_pil[:,:,0], 1, 255, cv2.THRESH_BINARY)
-    ret, thresh_simg = cv2.threshold(image_pil[:,:,1], 1, 255, cv2.THRESH_BINARY)
-    eimg = Image.fromarray(thresh_eimg).resize((image_size, image_size), Image.BICUBIC)
-    simg = Image.fromarray(thresh_simg).resize((image_size, image_size), Image.BICUBIC)
-    image = np.array(eimg)
+    for index1 in range(0, h, input_image_size):
+        for index2 in range(0, w, input_image_size):
+            np_patch_part = np_patch[index1:index1+ input_image_size, index2:index2+ input_image_size]
+            h_part = int(np_patch_part.shape[0])
+            w_part = int(np_patch_part.shape[1])
+
+            np_patch_part = np_patch_part.transpose((2, 0, 1))
+            np_patch_part = np_patch_part / 255
+            tensor_patch = torch.from_numpy(np_patch_part)
+            x = tensor_patch.unsqueeze(0)
+            x = x.to(device, dtype=torch.float32)
+            output = net(x)
+            output = torch.sigmoid(output)
+            pred = output.detach().squeeze().cpu().numpy()
+            mask_pred = (pred>.5).astype(np.uint8)
+            pil_mask_pred = Image.fromarray(mask_pred*255)
+            np_mask_pred = (np.array(pil_mask_pred)/255).astype(np.uint8)
+
+            # update output
+            output_patch_mask[index1:index1+h_part, index2:index2+w_part] = np_mask_pred
+    return output_patch_mask
+
+
+# function to save epi/stroma mask for a given patch
+def save_patch_epithelium_stroma_mask(patch, output_path):
+    h = patch.shape[0]
+    w = patch.shape[1]
+    image = np.array(patch)
     image_inv = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
 
     # filter using contour area and remove small noise
@@ -90,7 +83,7 @@ for i, (data, img_path) in enumerate(data_loader):
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
     for c in cnts:
         area = cv2.contourArea(c)
-        if area < 50:
+        if area < 100:
             cv2.drawContours(image_inv, [c], -1, (0, 0, 0), -1)
 
     # filter using contour area and remove small noise
@@ -99,8 +92,21 @@ for i, (data, img_path) in enumerate(data_loader):
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
     for c in cnts:
         area = cv2.contourArea(c)
-        if area < 50:
+        if area < 100:
             cv2.drawContours(output_mask, [c], -1, (0, 0, 0), -1)
 
-    cv2.imwrite(output_path + file_name[:-4] + '_epi_stroma_mask.png', output_mask)
-    print('process image... %s' % img_path)
+    # fill the holes
+    #for index in range(0, 3):
+    #    final_mask = cv2.dilate(output_mask.copy(), None, iterations=index+1)
+    patch = Image.fromarray(output_mask).resize((image_size, image_size), Image.BICUBIC)
+    patch.save(output_path)
+
+
+# run code
+if __name__ == '__main__':
+    im_paths = glob(input_path)
+    for im_path in im_paths:
+        filename = im_path.split("/")[-1]
+        output_mask = get_patch_epithelium_stroma_mask(im_path)
+        save_patch_epithelium_stroma_mask(output_mask, output_path + filename)
+    print("Done!")

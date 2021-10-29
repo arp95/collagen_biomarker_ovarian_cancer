@@ -1,6 +1,5 @@
 '''
-Code taken from original Hovernet implementation: https://github.com/vqdang/hover_net
-Modified script for my use case
+Hovernet Model for Nuclei Segmentation: https://github.com/vqdang/hover_net
 '''
 
 

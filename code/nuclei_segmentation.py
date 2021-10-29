@@ -1,6 +1,6 @@
 '''
-Code taken from original Hovernet implementation: https://github.com/vqdang/hover_net
-Modified script for my use case
+Modified by: Arpit Aggarwal
+Hovernet Model for Nuclei Segmentation: https://github.com/vqdang/hover_net
 '''
 
 
@@ -10,16 +10,16 @@ import os
 import copy
 
 # parameters to update
-input_path = '../saltz_dataset/'
+input_path = 'results/patches_example/'
 output_path = 'results/'
-batch_size = 8
+batch_size = 1
 workers = 0
 nr_types = 6
 model_type = 'fast'
 model_path = 'model_files/hovernet_fast_pannuke_type_tf2pytorch.tar'
 json_path = "model_files/type_info_pannuke.json"
 device = 'cpu'
-image_shape = 256
+image_shape = 3000
 
 
 # main code
