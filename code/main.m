@@ -1,11 +1,13 @@
 % hard-coded paths for masks and images
 epi_stroma_mask_path = "../../ovarian_cancer_results/epithelium_stroma_masks/TCGA-OY-A56P_33000_45000.png"
 nuclei_mask_path = "../../ovarian_cancer_results/nuclei_masks/TCGA-OY-A56P_33000_45000.png"
+rbc_path = "../../ovarian_cancer_results/rbc_masks/TCGA-OY-A56P_33000_45000.png"
 patch_path = "../../ovarian_cancer_results/patches/TCGA-OY-A56P_33000_45000.png"
 
 %% parameters setting, for different task, an appropriate  winSize/filterScale value is also different
 epi_stroma_mask = imread(epi_stroma_mask_path);
 nuclei_mask = imread(nuclei_mask_path);
+rbc_mask = imread(rbc_path);
 current_patch = imread(patch_path);
 winSize = 200; %size of windows from which the collagen fiber disorder was measured
 filter_scale = 3; %kernel size of the BIF model
@@ -15,12 +17,13 @@ orientBinInterval = 10; %discritize the continous orientation angle by interval 
 orientNum = 180 / orientBinInterval;
 
 %% extract collagen fiber mask
-frag_thresh = filter_scale*10; %remove detected collagen fragments with an area lower than the predefined threshold
+frag_thresh = filter_scale*15; %remove detected collagen fragments with an area lower than the predefined threshold
 [bifs] = compute_bifs(current_patch, filter_scale, .1, 1); %use BIF based model to extract the linear structures which was used as the representative of collagen fibers
 collagen_mask = bifs == featureDescriptor;
 [height, width] = size(collagen_mask);       
 collagen_mask = (collagen_mask & (1 - epi_stroma_mask)); %remove the detected collagen fibers in nonstroma region
 collagen_mask = (collagen_mask & (1 - nuclei_mask)); %remove the detected collagen fibers in stroma nuclei and epithelial nuclei
+collagen_mask = (collagen_mask & (1 - rbc_mask));
 collagen_mask = bwareaopen(collagen_mask, frag_thresh);
 imshow(labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1])) %overlay the collagen fiber mask on top of the tumor sample.
 hold on
@@ -72,7 +75,4 @@ end
 %cfodMapMoveAvg=movmean(cfodMap(:,:,featInd),2,1,'omitnan','Endpoint','discard'); % feature was calculated in sliding window version
 %cfodMap2(:,:,featInd)=movmean(cfodMapMoveAvg,2,2,'omitnan','Endpoint','discard');
 %end
-
 %% after acquisation of the feature map, a set of statistics e.g. mean, std, sknewness could be calculated. 
-
-
