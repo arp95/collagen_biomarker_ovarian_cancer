@@ -94,10 +94,13 @@ for index = 1:length(patches)
             cfod_map(cfod_map == 0) = NaN;
             %size(current_patch)
             %size(cfod_map(:,:,5))
-            filename = extractBefore(filename, ".png");
-            matrix = cfod_map(:,:,5);
-            save(collagen_masks_dir + filename + '.mat', "matrix");
-        
+            cfod_map_size = size(cfod_map);
+            if cfod_map_size(3) > 4
+                filename = extractBefore(filename, ".png");
+                matrix = cfod_map(:, :, 5);
+                save(collagen_masks_dir + filename + '.mat', "matrix");
+            end
+            
             % plot heatmap
             %figure
             %heat_map = heatmap(cfod_map(:,:,5), 'CellLabelColor','none');
