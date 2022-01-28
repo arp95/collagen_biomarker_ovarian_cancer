@@ -30,7 +30,7 @@ for index = 1:length(patches)
     empty_mask = zeros(3000, 3000);
     empty_mask(current_patch(:, :, 1) <= 255 & current_patch(:, :, 1) >= 225 & current_patch(:, :, 2) <= 255 & current_patch(:, :, 2) >= 225 & current_patch(:, :, 3) <= 255 & current_patch(:, :, 3) >= 225) = 1;
     histoqc_mask = imread(histoqc_masks_dir + filename);
-    size(histoqc_mask)
+    histoqc_mask = histoqc_mask(:, :, 1);
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0);
@@ -56,7 +56,6 @@ for index = 1:length(patches)
         collagen_mask = bwareaopen(collagen_mask, frag_thresh);
         %patch_collagen_mask = labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1]);
         %imwrite(patch_collagen_mask, collagen_masks_dir + filename);
-        size(collagen_mask)
 
         %% collagen orientation information extraction
         collogen_props = regionprops('table', collagen_mask, 'Centroid', 'Orientation', 'Area');
