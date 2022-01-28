@@ -20,9 +20,10 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer
 %nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
 %histoqc_masks_dir = "";
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
+%patches.name
 
 %% get collagen mask for each patch
-for index = 1:length(patches)
+for index = 10000:20000
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
