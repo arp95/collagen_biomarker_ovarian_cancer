@@ -55,12 +55,14 @@ for index = 1:length(patches)
         collagen_mask = bwareaopen(collagen_mask, frag_thresh);
         %patch_collagen_mask = labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1]);
         %imwrite(patch_collagen_mask, collagen_masks_dir + filename);
+        size(collagen_mask)
 
         %% collagen orientation information extraction
         collogen_props = regionprops('table', collagen_mask, 'Centroid', 'Orientation', 'Area');
         colg_center = collogen_props.Centroid;
         colg_area = collogen_props.Area;
         colg_orient = collogen_props.Orientation;
+        length(colg_orient)
 
         %% feature extraction
         if length(colg_orient) > 0
