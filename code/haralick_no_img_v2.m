@@ -68,9 +68,9 @@ energy = sum( p.*p );
 
 %%% Calculate Correlation Features %%%%
 mu_x = sum(pxi.*px);
-sigma_x = sqrt(sum( (pxi-mu_x).^2 .* px ));
+sigma_x = sqrt(sum( (pxi-mu_x).^2 .* px )) + 0.0000001;
 mu_y = sum(pyi.*py);
-sigma_y = sqrt(sum( (pyi-mu_y).^2 .* py));
+sigma_y = sqrt(sum( (pyi-mu_y).^2 .* py)) + 0.0000001;
 
 if sigma_x==0 || sigma_y==0
     warning('Zero standard deviation.');
