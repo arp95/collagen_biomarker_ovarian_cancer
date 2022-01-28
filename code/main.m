@@ -13,17 +13,16 @@ nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/n
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
 collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps/";
 
-% hard-coded paths for masks and images
+% hard-coded paths
 %patches_dir = "../../ovarian_cancer_results/patches_final/";
 %patches = dir(fullfile(patches_dir, '*.png'));
 %epi_stroma_masks_dir = "../../ovarian_cancer_results/epi_stroma_masks_final/";
 %nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
-%histoqc_masks_dir = "";
+%histoqc_masks_dir = "../../ovarian_cancer_results/histoqc_masks_final/";
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
-%patches.name
 
 %% get collagen mask for each patch
-for index = 40000:length(patches)
+for index = 1:12000
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -35,7 +34,8 @@ for index = 40000:length(patches)
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0);
-    if im2double(number_of_zeros / 9000000) > 0.333333 && im2double(number_of_zeros / 9000000) < 3
+    number_of_ones = sum(epi_stroma_mask(:) > 0);
+    if im2double(number_of_zeros/number_of_ones) > 0.2 && im2double(number_of_zeros/number_of_ones) < 5
         % hyperparameters for calculating collagen features
         win_size = 200;
         filter_scale = 3;
@@ -46,7 +46,7 @@ for index = 40000:length(patches)
         cfod_map = [];
 
         %% extract collagen fiber mask
-        frag_thresh = filter_scale*10; %remove detected collagen fragments with an area lower than the predefined threshold
+        frag_thresh = filter_scale*10;
         [bifs] = compute_bifs(current_patch, filter_scale, .1, 1);
         collagen_mask = bifs == feature_descriptor;
         [height, width] = size(collagen_mask);       
@@ -66,8 +66,8 @@ for index = 40000:length(patches)
 
         %% feature extraction
         if length(colg_orient) > 0
-            colg_orient_bin = fix(colg_orient / orient_bin_interval);
-            colg_orient_bin = colg_orient_bin + 9;
+            colg_orient_bin = fix(colg_orient/orient_bin_interval);
+            colg_orient_bin = colg_orient_bin+9;
             win_size_ind = 0;
             step_size = win_size;
             win_x_ind = 0;
@@ -93,10 +93,8 @@ for index = 40000:length(patches)
                 end
             end
             cfod_map(cfod_map == 0) = NaN;
-            %size(current_patch)
-            %size(cfod_map(:,:,5))
             cfod_map_size = size(cfod_map);
-            if length(cfod_map_size) > 2 && cfod_map_size(3) > 4
+            if length(cfod_map_size) > 2 && cfod_map_size(1) > 1 && cfod_map_size(2) > 1 && cfod_map_size(3) > 4
                 filename = extractBefore(filename, ".png");
                 matrix = cfod_map(:, :, 5);
                 save(collagen_masks_dir + filename + '.mat', "matrix");
@@ -119,4 +117,3 @@ for index = 40000:length(patches)
         end
     end
 end
-%% after acquisation of the feature map, a set of statistics e.g. mean, std, sknewness could be calculated. 
