@@ -30,6 +30,7 @@ for index = 1:length(patches)
     empty_mask = zeros(3000, 3000);
     empty_mask(current_patch(:, :, 1) <= 255 & current_patch(:, :, 1) >= 225 & current_patch(:, :, 2) <= 255 & current_patch(:, :, 2) >= 225 & current_patch(:, :, 3) <= 255 & current_patch(:, :, 3) >= 225) = 1;
     histoqc_mask = imread(histoqc_masks_dir + filename);
+    size(histoqc_mask)
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0);
@@ -62,7 +63,6 @@ for index = 1:length(patches)
         colg_center = collogen_props.Centroid;
         colg_area = collogen_props.Area;
         colg_orient = collogen_props.Orientation;
-        length(colg_orient)
 
         %% feature extraction
         if length(colg_orient) > 0
