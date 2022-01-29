@@ -31,7 +31,9 @@ for index = 1:length(files)
         file_feature_map_index1 = feature_maps(index1).name;
         file_feature_map_index1 = extractBefore(file_feature_map_index1, ".mat");
         file_feature_map_index1_split = split(file_feature_map_index1, "_");
-
+        file_feature_map_index1
+        file_feature_map_index1_split
+        
         if file_feature_map_index1_split{1} == filename
             count = count + 1;
             row = file_feature_map_index1_split(2);
