@@ -5,24 +5,24 @@ clear
 addpath(genpath('pwd'))
 
 % HPC Paths
-files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps/";
-files = dir(fullfile(files_dir, '*.svs'));
-feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_final/";
+%files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/";
+%feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps/";
+%files = dir(fullfile(files_dir, '*.svs'));
+%feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
+%collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_final/";
 
 % hard-coded paths for masks and images
-%files_dir = "../../ovarian_cancer_files/";
-%feature_maps_dir = "../../ovarian_cancer_results/sample_collagen_feature_maps/";
-%collagen_masks_dir = "../../ovarian_cancer_results/final_collagen_feature_maps/";
-%files = dir(fullfile(files_dir, '*.txt'));
-%feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
+files_dir = "../../ovarian_cancer_files/";
+feature_maps_dir = "../../ovarian_cancer_results/sample_collagen_feature_maps/";
+collagen_masks_dir = "../../ovarian_cancer_results/final_collagen_feature_maps/";
+files = dir(fullfile(files_dir, '*.txt'));
+feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
 
 
 %% get feature map for a slide
 for index = 1:length(files)
     filename = files(index).name;
-    filename = extractBefore(filename, ".svs");
+    filename = extractBefore(filename, ".txt");
     filename
 
     file_feature_map = [];
@@ -47,6 +47,7 @@ for index = 1:length(files)
     end
 
     % update zero values in feature map to nan
+    count
     file_feature_map(file_feature_map == 0) = NaN;
     file_feature_map_avg = movmean(file_feature_map, 2, 1, 'omitnan', 'Endpoint', 'discard');
     file_feature_map_avg = movmean(file_feature_map_avg, 2, 2, 'omitnan', 'Endpoint', 'discard');
