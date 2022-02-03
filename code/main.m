@@ -11,7 +11,7 @@ patches = dir(fullfile(patches_dir, '*.png'));
 epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/";
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_550/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600/";
 
 % hard-coded paths
 %patches_dir = "../../ovarian_cancer_results/patches_final/";
@@ -22,7 +22,7 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 24001:36000
+for index = 36001:length(patches)
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -37,7 +37,7 @@ for index = 24001:36000
     number_of_ones = sum(epi_stroma_mask(:) > 0);
     if im2double(number_of_zeros/number_of_ones) > 0.2 && im2double(number_of_zeros/number_of_ones) < 5
         % hyperparameters for calculating collagen features
-        win_size = 550;
+        win_size = 600;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
@@ -80,7 +80,7 @@ for index = 24001:36000
                     inwin_colg_ind = find(colg_center(:,1)>=win_x & colg_center(:,1)<win_x+win_size-1 & colg_center(:,2)>=win_y & colg_center(:,2)<win_y+win_size-1);
                     inwin_epi_stroma_mask = epi_stroma_mask(win_y:win_y+win_size-1, win_x:win_x+win_size-1);
                     number_of_zeros = sum(inwin_epi_stroma_mask(:) == 0);
-                    if number_of_zeros > 4000
+                    if number_of_zeros > 100
                         inwin_colg_orient = colg_orient_bin(inwin_colg_ind); 
                         inwin_colg_area = colg_area(inwin_colg_ind);
                         if length(inwin_colg_orient)>=5
