@@ -11,10 +11,10 @@ patches = dir(fullfile(patches_dir, '*.png'));
 epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/";
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_200/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600/";
 
 % hard-coded paths
-%patches_dir = "../../ovarian_cancer_results/patches_final/";
+%patches_dir = "../../ovarian_cancer_results/sample/";
 %patches = dir(fullfile(patches_dir, '*.png'));
 %epi_stroma_masks_dir = "../../ovarian_cancer_results/epi_stroma_masks_final/";
 %nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
@@ -22,7 +22,7 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 36001:length(patches)
+for index = 1:12000
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -33,11 +33,11 @@ for index = 36001:length(patches)
     histoqc_mask = histoqc_mask(:, :, 1);
 
     % only consider tiles with both epithelium and stromal content
-    number_of_zeros = sum(epi_stroma_mask(:) == 0);
+    number_of_zeros = sum(epi_stroma_mask(:) == 0) - sum(empty_mask(:) == 1);
     number_of_ones = sum(epi_stroma_mask(:) > 0);
-    if im2double(number_of_ones/(number_of_ones + number_of_zeros)) <= 0.9 && im2double(number_of_ones/(number_of_ones + number_of_zeros)) >=0.6
+    if im2double(number_of_ones/(number_of_ones + number_of_zeros)) < 0.9
         % hyperparameters for calculating collagen features
-        win_size = 200;
+        win_size = 600;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
