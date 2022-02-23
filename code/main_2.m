@@ -41,8 +41,8 @@ for index = 1:length(files)
             col = cellfun(@str2num, col);
             matrix = load(feature_maps_dir + file_feature_map_index1 + ".mat");
             size_matrix = size(matrix.matrix);
-            row = ((row / 3000) * size_matrix(1)) + 1;
-            col = ((col / 3000) * size_matrix(2)) + 1;
+            row = ((row / 3000) * 30) + 1;
+            col = ((col / 3000) * 30) + 1;
             file_feature_map(row:row+size_matrix(1)-1, col:col+size_matrix(2)-1) = matrix.matrix;
         end
     end

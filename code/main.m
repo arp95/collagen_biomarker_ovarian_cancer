@@ -14,30 +14,31 @@ histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/
 collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600/";
 
 % hard-coded paths
-%patches_dir = "../../ovarian_cancer_results/sample/";
-%patches = dir(fullfile(patches_dir, '*.png'));
-%epi_stroma_masks_dir = "../../ovarian_cancer_results/epi_stroma_masks_final/";
-%nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
-%histoqc_masks_dir = "../../ovarian_cancer_results/histoqc_masks_final/";
-%collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
+patches_dir = "../../ovarian_cancer_results/sample/";
+patches = dir(fullfile(patches_dir, '*.png'));
+epi_stroma_masks_dir = "../../ovarian_cancer_results/epi_stroma_masks_final/";
+nuclei_masks_dir = "../../ovarian_cancer_results/nuclei_masks_final/";
+histoqc_masks_dir = "../../ovarian_cancer_results/histoqc_masks_final/";
+collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 1:12000
-    filename = patches(index).name;
+for index = 1:1
+    filename = patches(index).name
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
     nuclei_mask = imread(nuclei_masks_dir + filename);
     empty_mask = zeros(3000, 3000);
     empty_mask(current_patch(:, :, 1) <= 255 & current_patch(:, :, 1) >= 240 & current_patch(:, :, 2) <= 255 & current_patch(:, :, 2) >= 240 & current_patch(:, :, 3) <= 255 & current_patch(:, :, 3) >= 240) = 1;
-    histoqc_mask = imread(histoqc_masks_dir + filename);
-    histoqc_mask = histoqc_mask(:, :, 1);
+    %histoqc_mask = imread(histoqc_masks_dir + filename);
+    %histoqc_mask = histoqc_mask(:, :, 1);
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0) - sum(empty_mask(:) == 1);
     number_of_ones = sum(epi_stroma_mask(:) > 0);
+    im2double(number_of_ones/(number_of_ones + number_of_zeros))
     if im2double(number_of_ones/(number_of_ones + number_of_zeros)) < 0.9
         % hyperparameters for calculating collagen features
-        win_size = 600;
+        win_size = 200;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
@@ -52,11 +53,11 @@ for index = 1:12000
         [height, width] = size(collagen_mask);       
         collagen_mask = (collagen_mask & (1 - epi_stroma_mask));
         collagen_mask = (collagen_mask & (1 - nuclei_mask));
-        collagen_mask = (collagen_mask & histoqc_mask);
+        %collagen_mask = (collagen_mask & histoqc_mask);
         collagen_mask = (collagen_mask & (1 - empty_mask));
         collagen_mask = bwareaopen(collagen_mask, frag_thresh);
-        %patch_collagen_mask = labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1]);
-        %imwrite(patch_collagen_mask, collagen_masks_dir + filename);
+        patch_collagen_mask = labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1]);
+        imwrite(patch_collagen_mask, collagen_masks_dir + filename);
 
         %% collagen orientation information extraction
         collogen_props = regionprops('table', collagen_mask, 'Centroid', 'Orientation', 'Area');
@@ -94,11 +95,11 @@ for index = 1:12000
             end
             cfod_map(cfod_map == 0) = NaN;
             cfod_map_size = size(cfod_map);
-            if length(cfod_map_size) > 2 && cfod_map_size(1) > 1 && cfod_map_size(2) > 1 && cfod_map_size(3) > 4
-                filename = extractBefore(filename, ".png");
-                matrix = cfod_map(:, :, 5);
-                save(collagen_masks_dir + filename + '.mat', "matrix");
-            end
+            %if length(cfod_map_size) > 2 && cfod_map_size(1) > 1 && cfod_map_size(2) > 1 && cfod_map_size(3) > 4
+            %    filename = extractBefore(filename, ".png");
+            %    matrix = cfod_map(:, :, 5);
+            %    save(collagen_masks_dir + filename + '.mat', "matrix");
+            %end
 
             % plot heatmap
             %figure
