@@ -7,10 +7,10 @@ addpath(genpath('pwd'))
 
 % HPC Paths
 files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_400/";
+feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_200/";
 files = dir(fullfile(files_dir, '*.svs'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/sample_5/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/s_1/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
@@ -49,8 +49,8 @@ for index = 1:length(files)
             min_file = min(min_file, min_val);
             max_file = max(max_file, max_val);
             size_matrix = size(matrix.matrix);
-            row = ((row / 3000) * 20) + 1;
-            col = ((col / 3000) * 20) + 1;
+            row = ((row / 3000) * 50) + 1;
+            col = ((col / 3000) * 50) + 1;
             file_feature_map(row:row+size_matrix(1)-1, col:col+size_matrix(2)-1) = matrix.matrix;
         end
     end
@@ -59,9 +59,9 @@ for index = 1:length(files)
     mean_file = sum/count;
     range_file = max_file - min_file;
     feature_matrix = [mean_file, min_file, max_file, range_file];
-    csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
+    %csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
     file_feature_map(file_feature_map == 0) = NaN;
-    %save(collagen_masks_dir + filename + '.mat', "file_feature_map");
+    save(collagen_masks_dir + filename + '.mat', "file_feature_map");
 
     % plot heatmap
     %figure
