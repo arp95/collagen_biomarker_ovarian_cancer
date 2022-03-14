@@ -6,23 +6,23 @@ addpath(genpath('pwd'))
 
 
 % hard-coded paths
-files_dir_1 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_200_final/";
+files_dir_1 = "../../ovarian_cancer_results/collagen_final/s_1/";
 files_1 = dir(fullfile(files_dir_1, '*.mat'));
-files_dir_2 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_250_final/";
+files_dir_2 = "../../ovarian_cancer_results/collagen_final/s_2/";
 files_2 = dir(fullfile(files_dir_2, '*.mat'));
-files_dir_3 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_300_final/";
+files_dir_3 = "../../ovarian_cancer_results/collagen_final/s_3/";
 files_3 = dir(fullfile(files_dir_3, '*.mat'));
-files_dir_4 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_350_final/";
+files_dir_4 = "../../ovarian_cancer_results/collagen_final/s_4/";
 files_4 = dir(fullfile(files_dir_4, '*.mat'));
-files_dir_5 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_400_final/";
+files_dir_5 = "../../ovarian_cancer_results/collagen_final/s_5/";
 files_5 = dir(fullfile(files_dir_5, '*.mat'));
-files_dir_6 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_450_final/";
+files_dir_6 = "../../ovarian_cancer_results/collagen_final/s_6/";
 files_6 = dir(fullfile(files_dir_6, '*.mat'));
-files_dir_7 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_500_final/";
+files_dir_7 = "../../ovarian_cancer_results/collagen_final/s_7/";
 files_7 = dir(fullfile(files_dir_7, '*.mat'));
-files_dir_8 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_550_final/";
+files_dir_8 = "../../ovarian_cancer_results/collagen_final/s_8/";
 files_8 = dir(fullfile(files_dir_8, '*.mat'));
-files_dir_9 = "../../ovarian_cancer_results/collagen_final/collagen_feature_maps_600_final/";
+files_dir_9 = "../../ovarian_cancer_results/collagen_final/s_9/";
 files_9 = dir(fullfile(files_dir_9, '*.mat'));
 
 
@@ -134,5 +134,5 @@ for index = 1:length(files_1)
 
     % form feature matrix and save
     feature_matrix = [mean_1, mean_2, mean_3, mean_4, mean_5, mean_6, mean_7, mean_8, mean_9, std_1, std_2, std_3, std_4, std_5, std_6, std_7, std_8, std_9, median_1, median_2, median_3, median_4, median_5, median_6, median_7, median_8, median_9, min_1, min_2, min_3, min_4, min_5, min_6, min_7, min_8, min_9, max_1, max_2, max_3, max_4, max_5, max_6, max_7, max_8, max_9, skewness_1, skewness_2, skewness_3, skewness_4, skewness_5, skewness_6, skewness_7, skewness_8, skewness_9, range_1, range_2, range_3, range_4, range_5, range_6, range_7, range_8, range_9, kurtosis_1, kurtosis_2, kurtosis_3, kurtosis_4, kurtosis_5, kurtosis_6, kurtosis_7, kurtosis_8, kurtosis_9];
-    csvwrite("../../ovarian_cancer_results/collagen_final/features/" + filename + '.csv', feature_matrix);
+    csvwrite("../../ovarian_cancer_results/collagen_final/features_s/" + filename + '.csv', feature_matrix);
 end
