@@ -50,7 +50,7 @@ for index = 1:length(files)
             min_file = min(min_file, min_val);
             max_file = max(max_file, max_val);
             size_matrix = size(matrix.matrix);
-            file_feature_map(countrow:countrow+size_matrix(1)-1, 1:size_matrix(2)-1) = matrix.matrix;
+            file_feature_map(countrow:countrow+size_matrix(1)-1, 1:size_matrix(2)) = matrix.matrix;
             countrow = countrow + 50;
         end
     end
