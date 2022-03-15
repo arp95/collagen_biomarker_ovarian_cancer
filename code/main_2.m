@@ -7,10 +7,10 @@ addpath(genpath('pwd'))
 
 % HPC Paths
 files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_500/";
+feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600/";
 files = dir(fullfile(files_dir, '*.svs'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/s_7/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/s_9/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
@@ -31,7 +31,7 @@ for index = 1:length(files)
     sum = 0;
     max_file = -1000000;
     min_file = 1000000;
-    countrow = 0;
+    countrow = 1;
     for index1 = 1:length(feature_maps)
         file_feature_map_index1 = feature_maps(index1).name;
         file_feature_map_index1 = extractBefore(file_feature_map_index1, ".mat");
@@ -50,7 +50,7 @@ for index = 1:length(files)
             min_file = min(min_file, min_val);
             max_file = max(max_file, max_val);
             size_matrix = size(matrix.matrix);
-            file_feature_map(countrow:countrow+size_matrix(1)-1, 0:size_matrix(2)-1) = matrix.matrix;
+            file_feature_map(countrow:countrow+size_matrix(1)-1, 1:size_matrix(2)-1) = matrix.matrix;
             countrow = countrow + 50;
         end
     end
