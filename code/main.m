@@ -94,9 +94,9 @@ for index = 36001:length(patches)
             end
             cfod_map(cfod_map == 0) = NaN;
             cfod_map_size = size(cfod_map);
-            if length(cfod_map_size) > 2 && cfod_map_size(1) > 1 && cfod_map_size(2) > 1 && cfod_map_size(3) > 7
+            if length(cfod_map_size) > 2 && cfod_map_size(1) > 1 && cfod_map_size(2) > 1 && cfod_map_size(3) > 4
                 filename = extractBefore(filename, ".png");
-                matrix = cfod_map(:, :, 8);
+                matrix = cfod_map(:, :, 5);
                 save(collagen_masks_dir + filename + '.mat', "matrix");
             end
 
