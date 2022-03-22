@@ -10,7 +10,7 @@ files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Dia
 feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_200/";
 files = dir(fullfile(files_dir, '*.svs'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/sample_1/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/s_1/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
@@ -30,6 +30,7 @@ for index = 1:length(files)
     sum1 = 0;
     max_file = -1000000;
     min_file = 1000000;
+    mean_file = [];
     for index1 = 1:length(feature_maps)
         file_feature_map_index1 = feature_maps(index1).name;
         file_feature_map_index1 = extractBefore(file_feature_map_index1, ".mat");
@@ -43,6 +44,7 @@ for index = 1:length(files)
             matrix = load(feature_maps_dir + file_feature_map_index1 + ".mat");
             count = count + 1;
             sum1 = sum1 + mean(matrix.matrix, 'all', 'omitnan');
+            mean_file = [mean_file, mean(matrix.matrix, 'all', 'omitnan')];
             min_val = min(matrix.matrix, [], 'all', 'omitnan');
             max_val = max(matrix.matrix, [], 'all', 'omitnan');
             min_file = min(min_file, min_val);
@@ -51,9 +53,20 @@ for index = 1:length(files)
     end
 
     % update zero values in feature map to nan
-    mean_file = sum1/count;
-    range_file = max_file - min_file;
-    feature_matrix = [mean_file, min_file, max_file, range_file];
+    %mean_file = sum1/count;
+    %range_file = max_file - min_file;
+
+
+    % new code
+    feature_1 = mean(mean_file);
+    feature_2 = std(mean_file);
+    feature_3 = median(mean_file);
+    feature_4 = min(mean_file);
+    feature_5 = max(mean_file);
+    feature_6 = feature_5 - feature_4;
+    feature_7 = skewness(mean_file);
+    feature_8 = kurtosis(mean_file);
+    feature_matrix = [feature_1, feature_2, feature_3, feature_4, feature_5, feature_6, feature_7, feature_8];
     csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
 
     % plot heatmap
