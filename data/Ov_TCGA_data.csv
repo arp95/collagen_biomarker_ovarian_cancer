@@ -1,0 +1,107 @@
+,submitter_id,year_of_birth,race,ethnicity,year_of_death,primary_diagnosis,age_at_diagnosis,vital_status,morphology,days_to_death,tissue_or_organ_of_origin,days_to_birth,site_of_resection_or_biopsy,days_to_last_follow_up
+0,TCGA-23-1021,1959,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",16484,dead,8441/3,1446,Ovary,-16484,Ovary,1446
+1,TCGA-23-2081,1951,white,not hispanic or latino,2006,"Serous cystadenocarcinoma, NOS",18162,dead,8441/3,2342,Ovary,-18162,Specified parts of peritoneum,--
+2,TCGA-25-1314,1958,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",15462,dead,8441/3,1004,Ovary,-15462,Ovary,974
+3,TCGA-25-1315,1950,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",18263,dead,8441/3,1583,Ovary,-18263,Ovary,1553
+4,TCGA-25-2042,1946,american indian or alaska native,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",22127,dead,8441/3,396,Ovary,-22127,Ovary,396
+5,TCGA-25-1316,1945,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",20331,dead,8441/3,1279,Ovary,-20331,Ovary,1126
+6,TCGA-25-1323,1929,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",26602,dead,8441/3,395,Ovary,-26602,Ovary,365
+7,TCGA-42-2590,1952,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",20965,dead,8441/3,317,Ovary,-20965,Ovary,227
+8,TCGA-WR-A838,1941,black or african american,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",26418,dead,8441/3,304,Ovary,-26418,Ovary,245
+9,TCGA-42-2588,1948,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",22377,dead,8441/3,880,Ovary,-22377,Ovary,287
+10,TCGA-23-1028,1961,white,hispanic or latino,--,"Serous cystadenocarcinoma, NOS",16018,alive,8441/3,--,Ovary,-16018,Ovary,1503
+11,TCGA-23-1022,1936,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",24798,dead,8441/3,1511,Ovary,-24798,Ovary,--
+12,TCGA-23-1023,1940,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",23826,alive,8441/3,--,Ovary,-23826,Ovary,1233
+13,TCGA-23-1026,1959,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",16442,alive,8441/3,--,Ovary,-16442,Ovary,816
+14,TCGA-23-1027,1957,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",17588,dead,8441/3,976,Ovary,-17588,Ovary,966
+15,TCGA-23-1030,1942,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",23416,alive,8441/3,--,Ovary,-23416,Ovary,886
+16,TCGA-23-1109,1937,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",23002,dead,8441/3,1562,Ovary,-23002,Ovary,1562
+17,TCGA-23-1110,1961,white,hispanic or latino,--,"Serous cystadenocarcinoma, NOS",15383,alive,8441/3,--,Ovary,-15383,Ovary,1658
+18,TCGA-23-1114,1945,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",20409,dead,8441/3,2089,Ovary,-20409,Ovary,2089
+19,TCGA-23-1116,1925,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",30464,dead,8441/3,592,Ovary,-30464,Ovary,139
+20,TCGA-23-1117,1956,white,not reported,2000,"Serous cystadenocarcinoma, NOS",15690,dead,8441/3,1013,Ovary,-15690,Ovary,--
+21,TCGA-23-1119,1933,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",23686,alive,8441/3,--,Ovary,-23686,Ovary,3953
+22,TCGA-23-1122,1945,white,not reported,2001,"Serous cystadenocarcinoma, NOS",19537,dead,8441/3,1189,Ovary,-19537,Ovary,--
+23,TCGA-23-2072,1942,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",21523,dead,8441/3,759,Ovary,-21523,Ovary,--
+24,TCGA-23-2077,1954,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",16552,alive,8441/3,--,Ovary,-16552,Ovary,3525
+25,TCGA-23-2079,1955,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",17122,alive,8441/3,--,Ovary,-17122,Specified parts of peritoneum,2788
+26,TCGA-23-2084,1955,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",16493,dead,8441/3,1516,Ovary,-16493,Ovary,--
+27,TCGA-25-1313,1938,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",22982,dead,8441/3,820,Ovary,-22982,Ovary,820
+28,TCGA-25-1318,1946,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",19755,dead,8441/3,1064,Ovary,-19755,Ovary,1064
+29,TCGA-25-1319,1927,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",26786,dead,8441/3,1977,Ovary,-26786,Ovary,1977
+30,TCGA-25-1320,1936,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",24018,dead,8441/3,1155,Ovary,-24018,Ovary,1124
+31,TCGA-25-1321,1936,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",23987,dead,8441/3,1033,Ovary,-23987,Ovary,1033
+32,TCGA-25-1326,1941,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",22339,dead,8441/3,1249,Ovary,-22339,Ovary,945
+33,TCGA-25-1328,1963,white,not hispanic or latino,2006,"Serous cystadenocarcinoma, NOS",13911,dead,8441/3,2009,Ovary,-13911,Ovary,1979
+34,TCGA-25-1623,1935,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",26060,dead,8441/3,565,Ovary,-26060,Ovary,565
+35,TCGA-25-1625,1940,white,not hispanic or latino,2008,"Serous cystadenocarcinoma, NOS",24298,dead,8441/3,840,Ovary,-24298,Ovary,548
+36,TCGA-25-1626,1941,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",23932,dead,8441/3,518,Ovary,-23932,Ovary,481
+37,TCGA-25-1628,1935,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",24488,dead,8441/3,627,Ovary,-24488,Ovary,627
+38,TCGA-25-1632,1934,white,not hispanic or latino,2006,"Serous cystadenocarcinoma, NOS",24993,dead,8441/3,1799,Ovary,-24993,Ovary,1732
+39,TCGA-25-1633,1938,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",23407,dead,8441/3,1891,Ovary,-23407,Ovary,1843
+40,TCGA-25-1634,1927,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",27749,dead,8441/3,1091,Ovary,-27749,Ovary,1081
+41,TCGA-25-1635,1931,white,not hispanic or latino,2006,"Serous cystadenocarcinoma, NOS",26200,dead,8441/3,1583,Ovary,-26200,Ovary,1558
+42,TCGA-25-1870,1935,white,not hispanic or latino,1995,"Serous cystadenocarcinoma, NOS",21550,dead,8441/3,455,Ovary,-21550,Ovary,455
+43,TCGA-25-1871,1923,white,not hispanic or latino,1995,"Serous cystadenocarcinoma, NOS",25627,dead,8441/3,760,Ovary,-25627,Ovary,760
+44,TCGA-25-1877,1912,white,not hispanic or latino,1995,"Serous cystadenocarcinoma, NOS",29615,dead,8441/3,730,Ovary,-29615,Ovary,549
+45,TCGA-25-1878,1934,white,not hispanic or latino,2001,"Serous cystadenocarcinoma, NOS",22035,dead,8441/3,2587,Ovary,-22035,Ovary,2587
+46,TCGA-25-2393,1922,white,not hispanic or latino,2006,"Serous cystadenocarcinoma, NOS",29585,dead,8441/3,1157,Ovary,-29585,Ovary,1157
+47,TCGA-25-2398,1933,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",26267,dead,8441/3,1369,Ovary,-26267,Ovary,1369
+48,TCGA-25-2399,1924,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",29373,dead,8441/3,608,Ovary,-29373,Ovary,608
+49,TCGA-25-2400,1928,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",27789,dead,8441/3,1278,Ovary,-27789,Ovary,1278
+50,TCGA-25-2404,1967,american indian or alaska native,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",14184,dead,8441/3,883,Ovary,-14184,Ovary,883
+51,TCGA-25-2408,1968,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",13606,dead,8441/3,943,Ovary,-13606,Ovary,943
+52,TCGA-25-2409,1934,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",26267,dead,8441/3,821,Ovary,-26267,Ovary,821
+53,TCGA-42-2582,1960,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",17961,dead,8441/3,1447,Ovary,-17961,Ovary,792
+54,TCGA-42-2589,1955,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",19852,alive,8441/3,--,Ovary,-19852,Ovary,1278
+55,TCGA-57-1586,1941,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",24304,alive,8441/3,--,Ovary,-24304,Ovary,679
+56,TCGA-59-A5PD,1956,black or african american,not hispanic or latino,2012,"Serous cystadenocarcinoma, NOS",20263,dead,8441/3,624,Ovary,-20263,Ovary,--
+57,TCGA-OY-A56P,1962,black or african american,not hispanic or latino,--,Papillary serous cystadenocarcinoma,17580,alive,8460/3,--,Ovary,-17580,Ovary,1207
+58,TCGA-13-A5FT,1942,black or african american,not reported,--,"Serous cystadenocarcinoma, NOS",24743,alive,8441/3,--,Ovary,-24743,Ovary,2143
+59,TCGA-13-A5FU,1949,black or african american,not reported,2009,"Serous cystadenocarcinoma, NOS",22256,dead,8441/3,256,Ovary,-22256,Specified parts of peritoneum,--
+60,TCGA-23-1024,1955,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",19052,alive,8441/3,--,Ovary,-19052,Ovary,468
+61,TCGA-23-1029,1961,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",16889,alive,8441/3,--,Ovary,-16889,Ovary,268
+62,TCGA-23-1031,1943,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",22225,dead,8441/3,575,Ovary,-22225,Ovary,575
+63,TCGA-23-1032,1929,black or african american,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",26715,dead,8441/3,84,Ovary,-26715,Ovary,68
+64,TCGA-23-1107,1940,white,not hispanic or latino,1999,"Serous cystadenocarcinoma, NOS",21561,dead,8441/3,9,Ovary,-21561,Ovary,9
+65,TCGA-23-1111,1945,white,not reported,--,"Serous cystadenocarcinoma, NOS",23171,alive,8441/3,--,Ovary,-23171,Ovary,98
+66,TCGA-23-1113,1954,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",17791,dead,8441/3,949,Ovary,-17791,Ovary,--
+67,TCGA-23-1118,1956,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",16471,alive,8441/3,--,Ovary,-16471,Ovary,2616
+68,TCGA-23-1120,1948,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",22148,alive,8441/3,--,Ovary,-22148,Ovary,130
+69,TCGA-23-1121,1957,not reported,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",18983,alive,8441/3,--,Ovary,-18983,Ovary,194
+70,TCGA-23-1123,1939,white,not hispanic or latino,2000,"Serous cystadenocarcinoma, NOS",21552,dead,8441/3,1018,Ovary,-21552,Ovary,--
+71,TCGA-23-1809,1946,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",23111,alive,8441/3,--,Ovary,-23111,Ovary,16
+72,TCGA-23-2078,1935,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",24223,alive,8441/3,--,Ovary,-24223,Specified parts of peritoneum,2661
+73,TCGA-23-2641,1924,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",31232,alive,8441/3,--,Ovary,-31232,Ovary,84
+74,TCGA-23-2643,1935,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",27093,alive,8441/3,--,Ovary,-27093,Ovary,143
+75,TCGA-23-2645,1955,asian,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",19758,alive,8441/3,--,Ovary,-19758,Ovary,137
+76,TCGA-23-2647,1960,asian,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",18205,alive,8441/3,--,Ovary,-18205,Ovary,135
+77,TCGA-23-2649,1949,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",22210,alive,8441/3,--,Ovary,-22210,Ovary,116
+78,TCGA-25-1312,1932,white,not hispanic or latino,2001,"Serous cystadenocarcinoma, NOS",25537,dead,8441/3,31,Ovary,-25537,Ovary,31
+79,TCGA-25-1317,1934,white,not hispanic or latino,2000,"Serous cystadenocarcinoma, NOS",24199,dead,8441/3,61,Ovary,-24199,Ovary,--
+80,TCGA-25-1322,1939,white,not hispanic or latino,2001,"Serous cystadenocarcinoma, NOS",22646,dead,8441/3,91,Ovary,-22646,Ovary,91
+81,TCGA-25-1324,1927,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",27090,dead,8441/3,1035,Ovary,-27090,Ovary,1035
+82,TCGA-25-1325,1925,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",28183,dead,8441/3,976,Ovary,-28183,Ovary,976
+83,TCGA-25-1329,1926,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",28093,dead,8441/3,457,Ovary,-28093,Ovary,90
+84,TCGA-25-1627,1930,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",26784,dead,8441/3,394,Ovary,-26784,Ovary,11
+85,TCGA-25-1630,1929,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",27006,dead,8441/3,1162,Ovary,-27006,Ovary,239
+86,TCGA-25-1631,1929,white,not hispanic or latino,2002,"Serous cystadenocarcinoma, NOS",26687,dead,8441/3,9,Ovary,-26687,Ovary,9
+87,TCGA-25-2390,1923,not reported,not reported,--,"Serous cystadenocarcinoma, NOS",29257,not reported,8441/3,--,Ovary,-29257,Ovary,--
+88,TCGA-25-2391,1946,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",20939,dead,8441/3,1492,Ovary,-20939,Ovary,1492
+89,TCGA-25-2392,1928,white,not hispanic or latino,2003,"Serous cystadenocarcinoma, NOS",27667,dead,8441/3,31,Ovary,-27667,Ovary,31
+90,TCGA-25-2396,1933,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",26145,dead,8441/3,92,Ovary,-26145,Ovary,92
+91,TCGA-25-2397,1945,white,not hispanic or latino,2005,"Serous cystadenocarcinoma, NOS",21581,dead,8441/3,365,Ovary,-21581,Ovary,365
+92,TCGA-25-2401,1940,white,not hispanic or latino,2004,"Serous cystadenocarcinoma, NOS",23711,dead,8441/3,90,Ovary,-23711,Ovary,90
+93,TCGA-3P-A9WA,1958,black or african american,not hispanic or latino,--,"Cystadenocarcinoma, NOS",20211,alive,8440/3,--,Ovary,-20211,Ovary,420
+94,TCGA-42-2587,1934,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",27510,alive,8441/3,--,Ovary,-27510,Ovary,722
+95,TCGA-42-2591,1958,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",18654,alive,8441/3,--,Ovary,-18654,Ovary,1240
+96,TCGA-42-2593,1942,american indian or alaska native,not hispanic or latino,2009,"Serous cystadenocarcinoma, NOS",24823,dead,8441/3,45,Ovary,-24823,Ovary,--
+97,TCGA-57-1582,1956,white,not reported,2008,"Serous cystadenocarcinoma, NOS",--,dead,8441/3,731,Ovary,--,Ovary,731
+98,TCGA-57-1583,1949,black or african american,not reported,2006,"Serous cystadenocarcinoma, NOS",21167,dead,8441/3,346,Ovary,-21167,Ovary,346
+99,TCGA-57-1585,1950,white,not hispanic or latino,2007,"Serous cystadenocarcinoma, NOS",20862,dead,8441/3,53,Ovary,-20862,Ovary,53
+100,TCGA-57-1992,1944,not reported,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",--,alive,8441/3,--,Ovary,--,Ovary,882
+101,TCGA-57-1993,1951,white,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",20498,alive,8441/3,--,Ovary,-20498,Ovary,763
+102,TCGA-57-1994,1941,white,not reported,--,"Serous cystadenocarcinoma, NOS",23062,alive,8441/3,--,Ovary,-23062,Ovary,761
+103,TCGA-5X-AA5U,1952,black or african american,not reported,--,Papillary serous cystadenocarcinoma,22438,alive,8460/3,--,Ovary,-22438,Ovary,361
+104,TCGA-OY-A56Q,1934,black or african american,not hispanic or latino,--,"Serous cystadenocarcinoma, NOS",28623,alive,8441/3,--,Ovary,-28623,Ovary,576
+105,TCGA-VG-A8LO,1958,black or african american,not hispanic or latino,2013,Papillary serous cystadenocarcinoma,20274,dead,8460/3,24,Ovary,-20274,Ovary,--
