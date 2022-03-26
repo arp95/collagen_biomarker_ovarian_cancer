@@ -14,8 +14,8 @@ print("Header files loaded...")
 
 
 # get the options selected by user
-input_path = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/"
-output_path = "/scratch/users/axa1399/tcga_ovarian_cancer/patches/"
+input_path = "/mnt/rstor/CSE_BME_AXM788/data/Gyn_TCGA/Cervix/"
+output_path = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
 
 
 # function for extracting patches
@@ -49,7 +49,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
             cenX = (coord[0] + tile_size*slide.level_downsamples[0]//2) // slide.level_downsamples[2]
             cenY = (coord[1] + tile_size*slide.level_downsamples[0]//2) // slide.level_downsamples[2]
             mask_region = mask.crop((cenX-(mask_tile_size//2), cenY-(mask_tile_size//2), cenX+(mask_tile_size//2), cenY+(mask_tile_size//2)))
-            if ImageStat.Stat(mask_region).mean[0] > 0.3:
+            if ImageStat.Stat(mask_region).mean[0] > 0.4:
                 tile = dz.get_tile(dz_level, (i, j)).convert("RGB")
                 tile_output_path = os.path.join(output_path, filename + "_" + str(coord[0]) + '_' + str(coord[1]) + '.png')
                 tile.save(tile_output_path)
@@ -57,5 +57,6 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 # command to extract patches
 files = glob.glob(input_path + "*")
+files = files[:50]
 for file in files:
     patch_extraction(wsi_path=file, output_path=output_path)

@@ -2,7 +2,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=30G
-#SBATCH --time=4-09:00:00
+#SBATCH --time=1-05:00:00
 #SBATCH --mail-user=$USER@case.edu
 #SBATCH --job-name="extractPatches"
 #SBATCH --output="log.pipeline.extractPatches"
@@ -18,4 +18,4 @@ module load openslide
 
 
 #===========patch extraction============#
-time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/code/extract_patches.py
+time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/extract_patches.py
