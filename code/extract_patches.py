@@ -57,6 +57,6 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 # command to extract patches
 files = glob.glob(input_path + "*")
-files = [input_path + 'TCGA-BI-A0VS.svs']
+files = [input_path + 'TCGA-C5-A1BL.svs']
 for file in files:
     patch_extraction(wsi_path=file, output_path=output_path)
