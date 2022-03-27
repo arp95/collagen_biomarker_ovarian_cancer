@@ -4,8 +4,8 @@
 #SBATCH --mem-per-cpu=30G
 #SBATCH --time=05:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="extractPatches15"
-#SBATCH --output="log.pipeline.extractPatches15"
+#SBATCH --job-name="extractPatches16"
+#SBATCH --output="log.pipeline.extractPatches16"
 
 
 #=========loading libraries==========#
