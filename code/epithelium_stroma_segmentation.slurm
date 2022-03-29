@@ -4,8 +4,8 @@
 #SBATCH --mem-per-cpu=30G
 #SBATCH --time=22:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="epiStroma9"
-#SBATCH --output="log.pipeline.epiStroma9"
+#SBATCH --job-name="epiStroma10"
+#SBATCH --output="log.pipeline.epiStroma10"
 
 
 #=========loading libraries==========#
