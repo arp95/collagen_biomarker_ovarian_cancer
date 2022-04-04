@@ -33,6 +33,7 @@ for index = 36001:length(patches)
     histoqc_mask = imread(histoqc_masks_dir + filename);
     histoqc_mask = histoqc_mask(:, :, 1);
     til_mask = imread(til_masks_dir + filename);
+    til_mask = til_mask(:, :, 1);
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0) - sum(empty_mask(:) == 1);
