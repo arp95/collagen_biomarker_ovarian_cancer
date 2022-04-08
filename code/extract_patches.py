@@ -13,11 +13,6 @@ import numpy as np
 print("Header files loaded...")
 
 
-# get the options selected by user
-input_path = "/mnt/rds/axm788/axm788lab/pathology/ovary/cancer/UPMC/adj_chemo/"
-output_path = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
-
-
 # function for extracting patches
 def patch_extraction(wsi_path, output_path, tile_size=3000):
     # read slide
@@ -56,8 +51,10 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 
 # command to extract patches
+input_path = "/scratch/users/axa1399/upmc_ovarian_cancer/files/"
+output_path = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[0:5]
+files = files[0:10]
 print(files)
 for file in files:
     print(file)
