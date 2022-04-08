@@ -61,7 +61,8 @@ for index = 1:length(files)
     feature_1 = mean(mean_file);
     feature_4 = min_file;
     feature_5 = max_file;
-    feature_matrix = [feature_1, feature_4, feature_5];
+    feature_6 = feature_5 - feature_4;
+    feature_matrix = [feature_1, feature_4, feature_5, feature_6];
     csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
 
     % plot heatmap
