@@ -14,8 +14,8 @@ print("Header files loaded...")
 
 
 # get the options selected by user
-input_path = "/mnt/rstor/CSE_BME_AXM788/data/Gyn_TCGA/Cervix/"
-output_path = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
+input_path = "/mnt/rds/axm788/axm788lab/pathology/ovary/cancer/UPMC/adj_chemo/"
+output_path = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
 
 
 # function for extracting patches
@@ -57,6 +57,6 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 # command to extract patches
 files = glob.glob(input_path + "*")
-files = [input_path + 'TCGA-PN-A8MA.svs']
+files = files[0:10]
 for file in files:
     patch_extraction(wsi_path=file, output_path=output_path)
