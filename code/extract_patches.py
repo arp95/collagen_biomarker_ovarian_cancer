@@ -57,8 +57,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 # command to extract patches
 files = glob.glob(input_path + "*")
-print(files)
-files = files[0]
+files = files[0:5]
 print(files)
 for file in files:
     print(file)
