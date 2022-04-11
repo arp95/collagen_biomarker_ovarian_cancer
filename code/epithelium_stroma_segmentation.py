@@ -22,7 +22,7 @@ from torch.utils.data import DataLoader
 
 # parameters
 model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/epi_seg_unet.pth"
-input_path = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
+input_path = "/scratch/users/axa1399/upmc_ovarian_cancer/new_patches/"
 output_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/epi_stroma_masks/"
 #model_path = "../../ovarian_cancer_model_files/epi_seg_unet.pth"
 #input_path = "../../cervix_cancer_results/patches_sample/"
