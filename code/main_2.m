@@ -6,11 +6,11 @@ addpath(genpath('pwd'))
 
 
 % HPC Paths
-files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_til_feature_maps_600/";
+files_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/files/";
+feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_200/";
 files = dir(fullfile(files_dir, '*.svs'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_til_feature_maps_600_final/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_200_final/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
@@ -63,8 +63,9 @@ for index = 1:length(files)
     feature_5 = max_file;
     feature_6 = feature_5 - feature_4;
     feature_matrix = [feature_1, feature_4, feature_5, feature_6];
-    csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
-
+    if feature_5 > 0
+        csvwrite(collagen_masks_dir + filename + '.csv', feature_matrix);
+    end
     % plot heatmap
     %figure
     %heat_map = heatmap(file_feature_map_avg, 'CellLabelColor','none');
