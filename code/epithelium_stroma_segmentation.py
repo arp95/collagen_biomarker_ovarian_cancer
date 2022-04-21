@@ -25,8 +25,8 @@ model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cance
 input_path = "/scratch/users/sxa786/uh_endometrium_cancer/patches/"
 output_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/uh_endometrium_cancer/epi_stroma_masks/"
 #model_path = "../../ovarian_cancer_model_files/epi_seg_unet.pth"
-#input_path = "../../cervix_cancer_results/patches_sample/"
-#output_path = "../../cervix_cancer_results/epi_stroma_masks/"
+#input_path = "../../sample_patches/"
+#output_path = "../../sample_patches_output/"
 image_size = 3000
 input_image_size = 750
 
@@ -108,7 +108,7 @@ def save_patch_epithelium_stroma_mask(patch, output_path):
 # run code
 if __name__ == '__main__':
     patches = glob(input_path + "*")
-    patches = patches[110000:]
+    patches = patches[100000:110000]
     for patch in patches:
         filename = patch.split("/")[-1]
         print(filename)
