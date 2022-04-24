@@ -22,8 +22,8 @@ from torch.utils.data import DataLoader
 
 # parameters
 model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/epi_seg_unet.pth"
-input_path = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
-output_path = "/scratch/users/axa1399/upmc_ovarian_cancer/epi_stroma_masks/"
+input_path = "/scratch/users/sxa786/uh_endometrium_cancer/patches/"
+output_path = "/scratch/users/sxa786/uh_endometrium_cancer/epi_stroma_masks/"
 #model_path = "../../ovarian_cancer_model_files/epi_seg_unet.pth"
 #input_path = "../../sample_patches/"
 #output_path = "../../sample_patches_output/"
@@ -65,7 +65,7 @@ def get_patch_epithelium_stroma_mask(input_path):
             output = net(x)
             output = torch.sigmoid(output)
             pred = output.detach().squeeze().cpu().numpy()
-            mask_pred = (pred>.8).astype(np.uint8)
+            mask_pred = (pred>.7).astype(np.uint8)
             pil_mask_pred = Image.fromarray(mask_pred*255)
             np_mask_pred = (np.array(pil_mask_pred)/255).astype(np.uint8)
 
@@ -108,7 +108,7 @@ def save_patch_epithelium_stroma_mask(patch, output_path):
 # run code
 if __name__ == '__main__':
     patches = glob(input_path + "*")
-    patches = patches[8500:9000]
+    patches = patches[65000:70000]
     for patch in patches:
         filename = patch.split("/")[-1]
         print(filename)
