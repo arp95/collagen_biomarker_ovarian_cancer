@@ -12,7 +12,7 @@ epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_canc
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/nuclei_masks/";
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/";
 %til_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks_new_10/";
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_400/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_350/";
 
 % hard-coded paths
 %patches_dir = "../../ovarian_cancer_results/sample/";
@@ -40,7 +40,7 @@ for index = 27001:length(patches)
     number_of_ones = sum(epi_stroma_mask(:) > 0);
     if im2double(number_of_ones/(number_of_ones + number_of_zeros)) < 0.9
         % hyperparameters for calculating collagen features
-        win_size = 400;
+        win_size = 350;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
