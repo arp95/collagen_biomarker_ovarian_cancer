@@ -23,7 +23,7 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 16001:length(patches)
+for index = 1:9000
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -84,10 +84,10 @@ for index = 16001:length(patches)
                     inwin_colg_ind = find(colg_center(:,1)>=win_x & colg_center(:,1)<win_x+win_size-1 & colg_center(:,2)>=win_y & colg_center(:,2)<win_y+win_size-1);
                     inwin_epi_stroma_mask = epi_stroma_mask(win_y:win_y+win_size-1, win_x:win_x+win_size-1);
                     number_of_zeros = sum(inwin_epi_stroma_mask(:) == 0);
-                    if number_of_zeros > 50
+                    if number_of_zeros >= 5
                         inwin_colg_orient = colg_orient_bin(inwin_colg_ind); 
                         inwin_colg_area = colg_area(inwin_colg_ind);
-                        if length(inwin_colg_orient)>=5
+                        if length(inwin_colg_orient) >= 5
                             [orient_occur_feats] = disorder_feat_extract(inwin_colg_orient, inwin_colg_area, orient_num, orient_cooccur_scheme);
                             if isfield(orient_occur_feats, 'val')
                                 cfod_map(win_y_ind, win_x_ind, :) = orient_occur_feats.val;
