@@ -7,11 +7,10 @@ addpath(genpath('pwd'))
 
 % HPC Paths
 patches_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/";
-patches = dir(fullfile(patches_dir, '*.png'));
 epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/epi_stroma_masks/";
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/nuclei_masks/";
+patches = dir(fullfile(nuclei_masks_dir, '*.png'));
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/";
-%til_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/til_masks_new_10/";
 collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_200/";
 
 % hard-coded paths
@@ -32,8 +31,6 @@ for index = 27001:length(patches)
     empty_mask(current_patch(:, :, 1) <= 255 & current_patch(:, :, 1) >= 240 & current_patch(:, :, 2) <= 255 & current_patch(:, :, 2) >= 240 & current_patch(:, :, 3) <= 255 & current_patch(:, :, 3) >= 240) = 1;
     histoqc_mask = imread(histoqc_masks_dir + filename);
     histoqc_mask = histoqc_mask(:, :, 1);
-    %til_mask = imread(til_masks_dir + filename);
-    %til_mask = til_mask(:, :, 1);
 
     % only consider tiles with both epithelium and stromal content
     number_of_zeros = sum(epi_stroma_mask(:) == 0) - sum(empty_mask(:) == 1);
@@ -57,7 +54,6 @@ for index = 27001:length(patches)
         collagen_mask = (collagen_mask & (1 - nuclei_mask));
         collagen_mask = (collagen_mask & histoqc_mask);
         collagen_mask = (collagen_mask & (1 - empty_mask));
-        %collagen_mask = (collagen_mask & til_mask);
         collagen_mask = bwareaopen(collagen_mask, frag_thresh);
         %patch_collagen_mask = labeloverlay(current_patch, collagen_mask, 'transparency', 0, 'Colormap', [0,0,1]);
         %imwrite(patch_collagen_mask, collagen_masks_dir + filename);
