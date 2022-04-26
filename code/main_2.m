@@ -7,10 +7,10 @@ addpath(genpath('pwd'))
 
 % HPC Paths
 files_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/files/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_300/";
+feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_250/";
 files = dir(fullfile(files_dir, '*.svs'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_300_final/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_250_final/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
