@@ -6,10 +6,9 @@ addpath(genpath('pwd'))
 
 
 % HPC Paths
-files_dir = "/mnt/rds/axm788/axm788lab/pathology/ovary/cancer/UPMC/adj_chemo/";
+files_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/files/";
 feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_600/";
 files = dir(fullfile(files_dir, '*.svs'));
-files
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
 collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_600_final/";
 
