@@ -54,7 +54,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 input_path = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/"
 output_path = "/scratch/users/rnd27/tcga_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[75:80]
+files = files[65:70]
 print(files)
 for file in files:
     print(file)
