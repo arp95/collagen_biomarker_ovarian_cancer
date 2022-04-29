@@ -2,10 +2,10 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=30G
-#SBATCH --time=20:00:00
+#SBATCH --time=22:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="macrophage8"
-#SBATCH --output="log.pipeline.macrophage8"
+#SBATCH --job-name="macrophage1"
+#SBATCH --output="log.pipeline.macrophage1"
 
 
 #=========loading libraries==========#
@@ -18,4 +18,4 @@ module load openslide
 
 
 #===========patch extraction============#
-time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/generate_macrophage_nuclei_mask.py
+time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/final_generate_macrophage_nuclei_mask.py
