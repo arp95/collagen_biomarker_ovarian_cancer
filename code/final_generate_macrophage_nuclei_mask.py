@@ -10,7 +10,7 @@ nuclei_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nucle
 output_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks/"
 
 masks = glob.glob(nuclei_masks + "*")
-masks = = masks[10000:20000] 
+masks = masks[:10000]
 for mask in masks:
     filename = mask.split("/")[-1]
     nuclei_mask = cv2.imread(mask, 0)
