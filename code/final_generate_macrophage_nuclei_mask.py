@@ -10,12 +10,15 @@ nuclei_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nucle
 output_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks/"
 
 masks = glob.glob(macrophage_masks + "*")
-masks = masks[10000:20000]
+masks = masks[:10000]
 for mask in masks:
     filename = mask.split("/")[-1]
     nuclei_mask = cv2.imread(nuclei_masks + filename, 0)
     macrophage_mask = cv2.imread(mask, 0)
     
+    if nuclei_mask is None:
+        continue
+
     _, nuclei_mask_thresh = cv2.threshold(nuclei_mask, 1, 255, cv2.THRESH_BINARY)
     cnts = cv2.findContours(nuclei_mask_thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cnts = cnts[0]
