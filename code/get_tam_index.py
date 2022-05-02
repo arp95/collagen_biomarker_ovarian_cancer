@@ -7,11 +7,12 @@ import numpy as np
 files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/"
 epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/"
+histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/" 
 macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks/"
 output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_output/"
 
 files = glob.glob(files_dir + "*")
-files = files[90:]
+files = files[:10]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
@@ -25,6 +26,7 @@ for file in files:
             macrophage_image = cv2.imread(macrophage_mask, 0)
             nuclei_image = cv2.imread(nuclei_masks_dir + mask_filename, 0)
             epi_stroma_image = cv2.imread(epi_stroma_masks_dir + mask_filename, 0)
+            histoqc_image = cv2.imread(histoqc_masks_dir + mask_filename, 0)
             
             # count macrophage
             _, macrophage_image_thresh = cv2.threshold(macrophage_image, 1, 255, cv2.THRESH_BINARY)
@@ -33,15 +35,19 @@ for file in files:
             for cnt in cnts:
                 (x, y, w, h) = cv2.boundingRect(cnt)
                 area = cv2.contourArea(cnt)
-                count1_macrophage += 1
                 
                 count1 = 0
+                count2 = 0
                 for index1 in range(max(y, 0), min(y+h, 3000)):
                     for index2 in range(max(x, 0), min(x+w, 3000)):
-                        if epi_stroma_image[index1, index2] > 0:
+                        if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
+                        if histoqc_image[index1, index2] > 0:
+                            count2 += 1
                 if count1 > 0.95*area:
                     count_macrophage += 1
+                if count2 > 0.95*area:
+                    count1_macrophage += 1
             
             # count nuclei
             _, nuclei_image_thresh = cv2.threshold(nuclei_image, 1, 255, cv2.THRESH_BINARY)
@@ -50,15 +56,19 @@ for file in files:
             for cnt in cnts:
                 (x, y, w, h) = cv2.boundingRect(cnt)
                 area = cv2.contourArea(cnt)
-                count1_total += 1
                 
                 count1 = 0
+                count2 = 0
                 for index1 in range(max(y, 0), min(y+h, 3000)):
                     for index2 in range(max(x, 0), min(x+w, 3000)):
-                        if epi_stroma_image[index1, index2] > 0:
+                        if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
+                        if histoqc_image[index1, index2] > 0:
+                            count2 += 1
                 if count1 > 0.95*area:
                     count_total += 1
+                if count2 > 0.95*area:
+                    count1_total += 1
     if count_total > 0 and count1_total > 0:
         value = float(count_macrophage) / count_total
         value_1 = float(count1_macrophage) / count1_total
