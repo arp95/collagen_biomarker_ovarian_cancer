@@ -38,15 +38,15 @@ for file in files:
                 
                 count1 = 0
                 count2 = 0
-                for index1 in range(max(y, 0), min(y+h, 3000)):
-                    for index2 in range(max(x, 0), min(x+w, 3000)):
+                for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
+                    for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
                         if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
                         if histoqc_image[index1, index2] > 0:
                             count2 += 1
-                if count1 > 0.95*area:
+                if count1 > 0.99*area:
                     count_macrophage += 1
-                if count2 > 0.95*area:
+                if count2 > 0.99*area:
                     count1_macrophage += 1
             
             # count nuclei
@@ -59,19 +59,19 @@ for file in files:
                 
                 count1 = 0
                 count2 = 0
-                for index1 in range(max(y, 0), min(y+h, 3000)):
-                    for index2 in range(max(x, 0), min(x+w, 3000)):
+                for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
+                    for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
                         if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
                         if histoqc_image[index1, index2] > 0:
                             count2 += 1
-                if count1 > 0.95*area:
+                if count1 > 0.99*area:
                     count_total += 1
-                if count2 > 0.95*area:
+                if count2 > 0.99*area:
                     count1_total += 1
     if count_total > 0 and count1_total > 0:
-        value = float(count_macrophage) / count_total
-        value_1 = float(count1_macrophage) / count1_total
+        value = (float(count_macrophage) / count_total) + 0.00000001
+        value_1 = (float(count1_macrophage) / count1_total) + 0.00000001
         with open(output_dir + filename + ".csv", 'w', newline='') as csvfile:
             spamwriter = csv.writer(csvfile)
             spamwriter.writerow([value, value_1])

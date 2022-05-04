@@ -7,7 +7,7 @@ import csv
 
 macrophage_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_interim_masks/"
 nuclei_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/"
-output_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks/"
+output_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks_1/"
 
 masks = glob.glob(macrophage_masks + "*")
 masks = masks[35000:]
@@ -28,10 +28,10 @@ for mask in masks:
         area = cv2.contourArea(cnt)
         
         count1 = 0
-        for index1 in range(max(y-5, 0), min(y+h+5, 3000)):
-            for index2 in range(max(x-5, 0), min(x+w+5, 3000)):
+        for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
+            for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
                 if macrophage_mask[index1, index2] > 0:
                     count1 += 1
-        if count1 > 0.5*area:
+        if count1 > 0.7*area:
             cv2.fillPoly(final_mask, pts=[cnt], color=(255, 255, 255))
     cv2.imwrite(output_masks+filename, final_mask)
