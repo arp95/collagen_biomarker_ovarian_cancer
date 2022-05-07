@@ -12,11 +12,11 @@ macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_canc
 output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_output_2/"
 
 files = glob.glob(files_dir + "*")
-files = files[16]
+files = [files[16]]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
-    filename = "TCGA-25-1320"
+    filename = "TCGA-25-1323"
     count_macrophage = 0.0
     count_total = 0.0
     count1_macrophage = 0.0
