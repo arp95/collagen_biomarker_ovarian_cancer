@@ -16,7 +16,7 @@ files = files[16]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
-    filename = "TCGA-23-1116"
+    filename = "TCGA-OY-A56P"
     count_macrophage = 0.0
     count_total = 0.0
     count1_macrophage = 0.0
