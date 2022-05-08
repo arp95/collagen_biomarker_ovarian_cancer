@@ -12,8 +12,8 @@ import glob
 from PIL import Image
 
 
-patches_dir = "/scratch/users/rnd27/tcga_ovarian_cancer/patches/"
-output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_interim_masks/"
+patches_dir = "/scratch/users/axa1399/upmc_ovarian_cancer/patches/"
+output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_nuclei_interim_masks/"
 model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/bestmodel_unet.pth"
 
 
@@ -147,7 +147,7 @@ img_transform = torchvision.transforms.Compose([
 
 
 patches = glob.glob(patches_dir + "*")
-patches = patches[35000:]
+patches = patches[:5000]
 for patch in patches:
     filename = patch.split("/")[-1]
     image = Image.open(patch).convert('RGB')
