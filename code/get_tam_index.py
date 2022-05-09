@@ -4,19 +4,18 @@ import csv
 import numpy as np
 
 
-files_dir = "/mnt/rstor/CSE_BME_AXM788/data/TCGA_Ovarian Cancer/TCGA_Ovarian_Diagnostic_Path/"
-epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/"
-nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/"
-histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/" 
-macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks_1/"
-output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_output_2/"
+files_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_200_final/"
+epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/epi_stroma_masks/"
+nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/nuclei_masks/"
+histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/" 
+macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_nuclei_masks/"
+output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_output/"
 
 files = glob.glob(files_dir + "*")
-files = [files[16]]
+files = files[:8]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
-    filename = "TCGA-3P-A9WA"
     count_macrophage = 0.0
     count_total = 0.0
     count1_macrophage = 0.0
