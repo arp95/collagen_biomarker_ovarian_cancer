@@ -12,7 +12,7 @@ macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_canc
 output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_output/"
 
 files = glob.glob(files_dir + "*")
-files = files[72:80]
+files = files[80:88]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
