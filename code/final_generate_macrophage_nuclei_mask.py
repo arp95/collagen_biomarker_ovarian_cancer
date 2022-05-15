@@ -28,10 +28,10 @@ for mask in masks:
         area = cv2.contourArea(cnt)
         
         count1 = 0
-        for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
-            for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
+        for index1 in range(max(y-2, 0), min(y+h+2, 3000)):
+            for index2 in range(max(x-2, 0), min(x+w+2, 3000)):
                 if macrophage_mask[index1, index2] > 0:
                     count1 += 1
-        if count1 > 0.7*area:
+        if count1 > 0.5*area:
             cv2.fillPoly(final_mask, pts=[cnt], color=(255, 255, 255))
     cv2.imwrite(output_masks+filename, final_mask)

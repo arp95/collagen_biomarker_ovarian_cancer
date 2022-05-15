@@ -49,11 +49,11 @@ for file in files:
                             count2 += 1
                         if epi_stroma_image[index1, index2] == 0 and histoqc_image[index1, index2] > 0:
                             count3 += 1
-                if count2 > 0.99*area and count1 > 0.6*area:
+                if count2 > 0.9*area and count1 > 0.5*area:
                     count_macrophage += 1
-                if count2 > 0.99*area:
+                if count2 > 0.9*area:
                     count1_macrophage += 1
-                if count2 > 0.99*area and count3 > 0.6*area:
+                if count2 > 0.9*area and count3 > 0.5*area:
                     count2_macrophage += 1
 
             # count nuclei
@@ -75,11 +75,11 @@ for file in files:
                             count2 += 1
                         if epi_stroma_image[index1, index2] == 0 and histoqc_image[index1, index2] > 0:
                             count3 += 1
-                if count2 > 0.99*area and count1 > 0.6*area:
+                if count2 > 0.9*area and count1 > 0.5*area:
                     count_total += 1
-                if count2 > 0.99*area:
+                if count2 > 0.9*area:
                     count1_total += 1
-                if count2 > 0.99*area and count3 > 0.6*area:
+                if count2 > 0.9*area and count3 > 0.5*area:
                     count2_total += 1
     if count_total > 0 and count1_total > 0:
         value = (float(count_macrophage) / count_total) + 0.00000001
