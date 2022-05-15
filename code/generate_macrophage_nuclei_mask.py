@@ -115,7 +115,7 @@ img_transform = torchvision.transforms.Compose([
 
 
 patches = glob.glob(patches_dir + "*")
-patches = patches[7500:10000]
+patches = patches[10000:12500]
 for patch in patches:
     filename = patch.split("/")[-1]
     image = Image.open(patch).convert('RGB')
