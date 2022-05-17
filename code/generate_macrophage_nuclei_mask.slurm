@@ -4,8 +4,8 @@
 #SBATCH --mem-per-cpu=30G
 #SBATCH --time=02-00:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="macrophage16"
-#SBATCH --output="log.pipeline.macrophage16"
+#SBATCH --job-name="macrophage17"
+#SBATCH --output="log.pipeline.macrophage17"
 
 
 #=========loading libraries==========#
