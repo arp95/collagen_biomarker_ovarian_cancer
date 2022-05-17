@@ -17,5 +17,5 @@ for mask in masks:
     epi_stroma_mask = cv2.imread(epi_stroma_masks + filename, 0)
 
     count = sum(sum(epi_stroma_mask > 0))
-    if float(count)/9000000 > 0.9:
+    if float(count)/9000000 > 0.8:
         cv2.imwrite(output_patches + filename, patch)
