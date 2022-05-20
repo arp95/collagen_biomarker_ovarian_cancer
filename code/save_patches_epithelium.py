@@ -10,7 +10,7 @@ epi_stroma_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/e
 output_patches = "/scratch/users/axa1399/upmc_ovarian_cancer/patches_epithelium/"
 
 masks = glob.glob(patches + "*")
-masks = masks[20000:25000]
+masks = masks[25000:30000]
 for mask in masks:
     filename = mask.split("/")[-1]
     patch = cv2.imread(mask)
