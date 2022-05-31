@@ -2,10 +2,10 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=30G
-#SBATCH --time=22:00:00
+#SBATCH --time=03-15:00:00
 #SBATCH --mail-user=$USER@case.edu
-#SBATCH --job-name="features09"
-#SBATCH --output="log.pipeline.features09"
+#SBATCH --job-name="features01"
+#SBATCH --output="log.pipeline.features01"
 
 
 #=========loading libraries==========#
@@ -18,4 +18,4 @@ module load matlab
 
 
 cd /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/
-time matlab -nodisplay -r main_2
+time matlab -nodisplay -r main

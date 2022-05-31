@@ -6,12 +6,12 @@ addpath(genpath('pwd'))
 
 
 % HPC Paths
-patches_dir = "/scratch/users/rnd27/tcga_ovarian_cancer/patches/";
-patches = dir(fullfile("/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/macrophage_nuclei_masks/", '*.png'));
-epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/epi_stroma_masks/";
-nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/nuclei_masks/";
-histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/histoqc_masks/";
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600_2/";
+patches_dir = "/scratch/users/sxa786/uh_endometrium_cancer/patches/";
+patches = dir(fullfile("/scratch/users/rnd27/uh_endometrium_cancer/nuclei_masks/", '*.png'));
+epi_stroma_masks_dir = "/scratch/users/sxa786/uh_endometrium_cancer/epi_stroma_masks/";
+nuclei_masks_dir = "/scratch/users/rnd27/uh_endometrium_cancer/nuclei_masks/";
+histoqc_masks_dir = "/scratch/users/sxa786/uh_endometrium_cancer/histoqc_masks/";
+collagen_masks_dir = "/scratch/users/rnd27/uh_endometrium_cancer/results/collagen_feature_maps_200/";
 
 % hard-coded paths
 %patches_dir = "../../ovarian_cancer_results/sample/";
@@ -22,7 +22,7 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 1:10000
+for index = 1:25000
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -37,7 +37,7 @@ for index = 1:10000
     number_of_ones = sum(epi_stroma_mask(:) > 0);
     if im2double(number_of_ones/(number_of_ones + number_of_zeros)) < 0.9
         % hyperparameters for calculating collagen features
-        win_size = 600;
+        win_size = 200;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
