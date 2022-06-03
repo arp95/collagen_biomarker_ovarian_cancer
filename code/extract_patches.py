@@ -56,7 +56,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 input_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/files/"
 output_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[:10]
+files = files[10:20]
 print(files)
 for file in files:
     print(file)
