@@ -6,11 +6,11 @@ addpath(genpath('pwd'))
 
 
 % HPC Paths
-files_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_200_final/";
-feature_maps_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600_2/";
-files = dir(fullfile(files_dir, '*.mat'));
+files_dir = "/scratch/users/rnd27/uh_endometrium_cancer/uh_endometrial_cancer_files/";
+feature_maps_dir = "/scratch/users/rnd27/uh_endometrium_cancer/results/collagen_feature_maps_200/";
+files = dir(fullfile(files_dir, '*.csv'));
 feature_maps = dir(fullfile(feature_maps_dir, '*.mat'));
-collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer/collagen_feature_maps_600_2_final/";
+collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/uh_endometrial_cancer/collagen_feature_maps_200_final/";
 
 % hard-coded paths for masks and images
 %files_dir = "../../ovarian_cancer_files/";
@@ -23,7 +23,7 @@ collagen_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_ovarian_cancer
 %% get feature map for a slide
 for index = 1:length(files)
     filename = files(index).name;
-    filename = extractBefore(filename, ".mat");
+    filename = extractBefore(filename, ".csv");
     filename
 
     count = 0;
