@@ -56,7 +56,7 @@ output_path = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
 #input_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/files/"
 #output_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[170:180]
+files = files[180:190]
 print(files)
 for file in files:
     print(file)
