@@ -5,12 +5,12 @@ import glob
 import csv
 
 
-macrophage_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_nuclei_interim_masks_1/"
-nuclei_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/nuclei_masks/"
-output_masks = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_nuclei_masks_1/"
+macrophage_masks = "/scratch/users/axa1399/yale_lung_cancer/macrophage_masks/"
+nuclei_masks = "/scratch/users/axa1399/yale_lung_cancer/nuclei_masks/"
+output_masks = "/scratch/users/axa1399/yale_lung_cancer/macrophage_masks_final/"
 
 masks = glob.glob(macrophage_masks + "*")
-masks = masks[30000:]
+masks = masks[:1000]
 for mask in masks:
     filename = mask.split("/")[-1]
     nuclei_mask = cv2.imread(nuclei_masks + filename, 0)
