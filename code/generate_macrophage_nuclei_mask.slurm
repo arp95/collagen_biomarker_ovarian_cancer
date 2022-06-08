@@ -18,4 +18,4 @@ module load openslide
 
 
 #===========patch extraction============#
-time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/final_generate_macrophage_nuclei_mask.py
+time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/get_tam_index.py
