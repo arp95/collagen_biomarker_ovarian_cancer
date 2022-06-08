@@ -4,15 +4,15 @@ import csv
 import numpy as np
 
 
-files_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/collagen_feature_maps_200_final/"
-epi_stroma_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/epi_stroma_masks/"
-nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/nuclei_masks/"
-histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/" 
-macrophage_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_nuclei_masks/"
-output_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/macrophage_output/"
+files_dir = "/scratch/users/axa1399/yale_lung_cancer/files/"
+epi_stroma_masks_dir = "/scratch/users/axa1399/yale_lung_cancer/epi_stroma_masks/"
+nuclei_masks_dir = "/scratch/users/axa1399/yale_lung_cancer/nuclei_masks/"
+#histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/upmc_ovarian_cancer/histoqc_masks/" 
+macrophage_masks_dir = "/scratch/users/axa1399/yale_lung_cancer/macrophage_masks_final/"
+output_dir = "/scratch/users/axa1399/yale_lung_cancer/macrophage_output/"
 
 files = glob.glob(files_dir + "*")
-files = files[120:]
+files = files[:121]
 macrophage_masks = glob.glob(macrophage_masks_dir + "*")
 for file in files:
     filename = file.split("/")[-1][:-4]
@@ -28,7 +28,8 @@ for file in files:
             macrophage_image = cv2.imread(macrophage_mask, 0)
             nuclei_image = cv2.imread(nuclei_masks_dir + mask_filename, 0)
             epi_stroma_image = cv2.imread(epi_stroma_masks_dir + mask_filename, 0)
-            histoqc_image = cv2.imread(histoqc_masks_dir + mask_filename, 0)
+            #histoqc_image = cv2.imread(histoqc_masks_dir + mask_filename, 0)
+            histoqc_image = np.ones((500, 500))
             
             # count macrophage
             _, macrophage_image_thresh = cv2.threshold(macrophage_image, 1, 255, cv2.THRESH_BINARY)
@@ -41,8 +42,8 @@ for file in files:
                 count1 = 0
                 count2 = 0
                 count3 = 0
-                for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
-                    for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
+                for index1 in range(max(y-1, 0), min(y+h+1, 500)):
+                    for index2 in range(max(x-1, 0), min(x+w+1, 500)):
                         if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
                         if histoqc_image[index1, index2] > 0:
@@ -67,8 +68,8 @@ for file in files:
                 count1 = 0
                 count2 = 0
                 count3 = 0
-                for index1 in range(max(y-1, 0), min(y+h+1, 3000)):
-                    for index2 in range(max(x-1, 0), min(x+w+1, 3000)):
+                for index1 in range(max(y-1, 0), min(y+h+1, 500)):
+                    for index2 in range(max(x-1, 0), min(x+w+1, 500)):
                         if epi_stroma_image[index1, index2] > 0 and histoqc_image[index1, index2] > 0:
                             count1 += 1
                         if histoqc_image[index1, index2] > 0:
