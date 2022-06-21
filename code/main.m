@@ -11,7 +11,7 @@ patches = dir(fullfile("/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_cervix_cance
 epi_stroma_masks_dir = "/scratch/users/axa1399/tcga_cervix_cancer/epi_stroma_masks/";
 nuclei_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_cervix_cancer/nuclei_masks/";
 histoqc_masks_dir = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/tcga_cervix_cancer/histoqc_masks/";
-collagen_masks_dir = "/scratch/users/axa1399/tcga_cervix_cancer/results/collagen_feature_maps_600/";
+collagen_masks_dir = "/scratch/users/axa1399/tcga_cervix_cancer/results/collagen_feature_maps_350/";
 
 % hard-coded paths
 %patches_dir = "../../ovarian_cancer_results/sample/";
@@ -22,7 +22,7 @@ collagen_masks_dir = "/scratch/users/axa1399/tcga_cervix_cancer/results/collagen
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 60001:length(patches)
+for index = 65001:length(patches)
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
@@ -37,7 +37,7 @@ for index = 60001:length(patches)
     number_of_ones = sum(epi_stroma_mask(:) > 0);
     if im2double(number_of_ones/(number_of_ones + number_of_zeros)) < 0.9
         % hyperparameters for calculating collagen features
-        win_size = 600;
+        win_size = 350;
         filter_scale = 3;
         orient_cooccur_scheme = 1;
         feature_descriptor = 6;
