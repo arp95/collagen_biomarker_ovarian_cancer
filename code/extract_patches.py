@@ -51,7 +51,7 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 
 # command to extract patches
-input_path = "/mnt/rds/axm788/axm788lab/pathology/ovary/cancer/CCF/treatment/IO_treated/WSI/"
+input_path = "/scratch/users/axa1399/ccf_ovarian_cancer/files/"
 output_path = "/scratch/users/axa1399/ccf_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
 files = files[:10]
