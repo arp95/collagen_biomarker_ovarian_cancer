@@ -18,4 +18,4 @@ module load openslide
 
 
 #===========patch extraction============#
-time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/extract_patches_updated.py
+time python3 /mnt/rstor/CSE_BME_AXM788/home/axa1399/collagen_biomarker_ovarian_cancer/code/extract_patches.py
