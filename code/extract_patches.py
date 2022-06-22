@@ -51,12 +51,10 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 
 # command to extract patches
-input_path = "/mnt/rstor/CSE_BME_AXM788/data/Gyn_TCGA/Cervix/"
-output_path = "/scratch/users/axa1399/tcga_cervix_cancer/patches/"
-#input_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/files/"
-#output_path = "/scratch/users/sxb1208/tcia_ovarian_cancer/patches/"
+input_path = "/mnt/rds/axm788/axm788lab/pathology/ovary/cancer/CCF/treatment/IO_treated/WSI/"
+output_path = "/scratch/users/axa1399/ccf_ovarian_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[270:]
+files = files[:10]
 print(files)
 for file in files:
     print(file)
