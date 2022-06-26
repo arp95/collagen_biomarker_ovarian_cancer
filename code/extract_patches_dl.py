@@ -34,6 +34,7 @@ def patch_extraction(wsi_path, output_path, tile_size=512):
     mask = mask.point(fn, mode='1')
     
     # loop through each patch of the slide of size=(tile_size, tile_size)
+    count = 0
     for i in range(dz.level_tiles[dz_level][0]):
         for j in range(dz.level_tiles[dz_level][1]):
             coord = dz.get_tile_coordinates(dz_level, (i, j))
@@ -45,16 +46,19 @@ def patch_extraction(wsi_path, output_path, tile_size=512):
             cenY = (coord[1] + tile_size*slide.level_downsamples[0]//2) // slide.level_downsamples[2]
             mask_region = mask.crop((cenX-(mask_tile_size//2), cenY-(mask_tile_size//2), cenX+(mask_tile_size//2), cenY+(mask_tile_size//2)))
             if ImageStat.Stat(mask_region).mean[0] > 0.6:
+                count += 1
                 tile = dz.get_tile(dz_level, (i, j)).convert("RGB")
-                tile_output_path = os.path.join(output_path, filename + "_" + str(coord[0]) + '_' + str(coord[1]) + '.png')
-                tile.save(tile_output_path)
+
+                if count%100 == 0:
+                    tile_output_path = os.path.join(output_path, filename + "_" + str(coord[0]) + '_' + str(coord[1]) + '.png')
+                    tile.save(tile_output_path)
 
 
 # command to extract patches
-input_path = "/scratch/users/axa1399/dl_predict_outcome/validation/files/high/endometrial/"
-output_path = "/scratch/users/axa1399/dl_predict_outcome/validation/input/high/"
+input_path = "/scratch/users/axa1399/dl_predict_outcome/train/files/high/endometrial/"
+output_path = "/scratch/users/axa1399/dl_predict_outcome/train/input/high/"
 files = glob.glob(input_path + "*")
-files = files[20:]
+files = files[:10]
 print(files)
 for file in files:
     print(file)
