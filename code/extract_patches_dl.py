@@ -49,16 +49,16 @@ def patch_extraction(wsi_path, output_path, tile_size=512):
                 count += 1
                 tile = dz.get_tile(dz_level, (i, j)).convert("RGB")
 
-                if count%100 == 0:
+                if count%1 == 0:
                     tile_output_path = os.path.join(output_path, filename + "_" + str(coord[0]) + '_' + str(coord[1]) + '.png')
                     tile.save(tile_output_path)
 
 
 # command to extract patches
-input_path = "/scratch/users/axa1399/dl_predict_outcome/validation/files/high/endometrial/"
-output_path = "/scratch/users/axa1399/dl_predict_outcome/validation/input/high/"
+input_path = "/scratch/users/axa1399/dl_predict_outcome/test/files/high/"
+output_path = "/scratch/users/axa1399/dl_predict_outcome/test/input/high/"
 files = glob.glob(input_path + "*")
-files = files[30:]
+files = files[:10]
 print(files)
 for file in files:
     print(file)
