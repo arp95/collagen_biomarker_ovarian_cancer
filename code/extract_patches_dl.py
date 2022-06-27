@@ -58,7 +58,7 @@ def patch_extraction(wsi_path, output_path, tile_size=512):
 input_path = "/scratch/users/axa1399/dl_predict_outcome/validation/files/high/endometrial/"
 output_path = "/scratch/users/axa1399/dl_predict_outcome/validation/input/high/"
 files = glob.glob(input_path + "*")
-files = files[10:20]
+files = files[20:30]
 print(files)
 for file in files:
     print(file)
