@@ -55,7 +55,7 @@ def patch_extraction(wsi_path, output_path, tile_size=512):
 
 
 # command to extract patches
-input_path = "/scratch/users/axa1399/dl_predict_outcome/validation/files/low/cervix/"
+input_path = "/scratch/users/axa1399/dl_predict_outcome/validation/files/low/endometrial/"
 output_path = "/scratch/users/axa1399/dl_predict_outcome/validation/input/low/"
 files = glob.glob(input_path + "*")
 #files = files[40:]
