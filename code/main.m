@@ -22,7 +22,7 @@ collagen_masks_dir = "/scratch/users/axa1399/ccf_ovarian_cancer/results/collagen
 %collagen_masks_dir = "../../ovarian_cancer_results/sample_final/";
 
 %% get collagen mask for each patch
-for index = 1:10000
+for index = 10001:length(patches)
     filename = patches(index).name;
     current_patch = imread(patches_dir + filename);
     epi_stroma_mask = imread(epi_stroma_masks_dir + filename);
