@@ -22,8 +22,8 @@ from torch.utils.data import DataLoader
 
 # parameters
 model_path = "/mnt/rstor/CSE_BME_AXM788/home/axa1399/til_biomarker_ovarian_cancer/model_files/epi_seg_unet.pth"
-input_path = "/scratch/users/axa1399/dl_predict_outcome/train/input/high/"
-output_path = "/scratch/users/axa1399/dl_predict_outcome/train/epi_stroma_masks/high/"
+input_path = "/scratch/users/axa1399/dl_predict_outcome/train/input/low/"
+output_path = "/scratch/users/axa1399/dl_predict_outcome/train/epi_stroma_masks/low/"
 #model_path = "../../ovarian_cancer_model_files/epi_seg_unet.pth"
 #input_path = "../../sample_patches/"
 #output_path = "../../sample_patches_output/"
