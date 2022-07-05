@@ -6,9 +6,9 @@ import numpy as np
 
 
 # paths
-input_dir = glob.glob("dl_predict_outcome/train/input/high/*")
-epi_stroma_dir = "dl_predict_outcome/train/epi_stroma_masks/high/"
-new_input_dir = "dl_predict_outcome/train/new_input/high/"
+input_dir = glob.glob("/scratch/users/axa1399/dl_predict_outcome/train/input/high/*")
+epi_stroma_dir = "/scratch/users/axa1399/dl_predict_outcome/train/epi_stroma_masks/high/"
+new_input_dir = "/scratch/users/axa1399/dl_predict_outcome/train/new_input/high/"
 
 for index in range(0, len(input_dir)):
     input_filename = input_dir[index].split("/")[-1]
