@@ -108,7 +108,7 @@ def save_patch_epithelium_stroma_mask(patch, output_path):
 # run code
 if __name__ == '__main__':
     patches = glob(input_path + "*")
-    patches = patches[275000:300000]
+    patches = patches[300000:325000]
     for patch in patches:
         filename = patch.split("/")[-1]
         print(filename)
