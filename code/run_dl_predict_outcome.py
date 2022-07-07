@@ -49,9 +49,9 @@ for patch in patches:
     current_patch = torch.from_numpy(np.array([image]))
     current_patch = current_patch.to(device, dtype=torch.float32)
     output_patch = model(current_patch)
-    _, predicted = output.max(1)
+    _, predicted = output_patch.max(1)
     pred = int(predicted[0])
     if pred == 0:
-        cv2.imwrite(output_dir+ 'low/' + filename, image)
+        cv2.imwrite(output_dir + 'low/' + filename, image)
     else:
-        cv2.imwrite(output_dir+ 'high/' + filename, image)
+        cv2.imwrite(output_dir + 'high/' + filename, image)
