@@ -45,6 +45,7 @@ for patch in patches:
     image = Image.open(patch).convert('RGB')
     image = img_transform(image)
     image = np.array(image)
+    image_to_save = cv2.imread(patch)
     
     current_patch = torch.from_numpy(np.array([image]))
     current_patch = current_patch.to(device, dtype=torch.float32)
@@ -52,6 +53,6 @@ for patch in patches:
     _, predicted = output_patch.max(1)
     pred = int(predicted[0])
     if pred == 0:
-        cv2.imwrite(output_dir + 'low/' + filename, image)
+        cv2.imwrite(output_dir + 'low/' + filename, image_to_save)
     else:
-        cv2.imwrite(output_dir + 'high/' + filename, image)
+        cv2.imwrite(output_dir + 'high/' + filename, image_to_save)
