@@ -7,7 +7,7 @@ import numpy as np
 
 # paths
 input_dir = glob.glob("/scratch/users/axa1399/dl_predict_outcome/test/input/high/*")
-input_dir = input_dir[275000:300000]
+input_dir = input_dir[300000:325000]
 epi_stroma_dir = "/scratch/users/axa1399/dl_predict_outcome/test/epi_stroma_masks/high/"
 new_input_dir = "/scratch/users/axa1399/dl_predict_outcome/test/new_input/high/"
 
