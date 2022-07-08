@@ -12,7 +12,7 @@ import glob
 from PIL import Image
 
 
-patches_dir = "/scratch/users/axa1399/dl_predict_outcome/test/new_input/high/"
+patches_dir = "/scratch/users/axa1399/dl_predict_outcome/test/new_input/low/"
 output_dir = "/scratch/users/axa1399/dl_predict_outcome/test/results_resnet18/"
 model_path = "/scratch/users/axa1399/dl_predict_outcome/dl_predict_outcome_best_model_resnet18.pth"
 
@@ -39,7 +39,7 @@ img_transform = torchvision.transforms.Compose([
 
 
 patches = glob.glob(patches_dir + "*")
-patches = patches[75000:]
+#patches = patches[75000:]
 for patch in patches:
     filename = patch.split("/")[-1]
     image = Image.open(patch).convert('RGB')
