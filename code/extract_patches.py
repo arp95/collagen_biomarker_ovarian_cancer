@@ -51,11 +51,12 @@ def patch_extraction(wsi_path, output_path, tile_size=3000):
 
 
 # command to extract patches
-input_path = "/scratch/users/axa1399/ccf_ovarian_cancer/files/"
-output_path = "/scratch/users/axa1399/ccf_ovarian_cancer/patches/"
+input_path = "/mnt/rstor/CSE_BME_AXM788/data/Gyn_TCGA/UCEC/"
+output_path = "/scratch/users/axa1399/tcga_endometrial_cancer/patches/"
 files = glob.glob(input_path + "*")
-files = files[40:]
+files = files[:10]
 print(files)
 for file in files:
     print(file)
-    patch_extraction(wsi_path=file, output_path=output_path)
+    if "DX1" in file:
+        patch_extraction(wsi_path=file, output_path=output_path)
